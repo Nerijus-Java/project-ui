@@ -1,5 +1,13 @@
+import {Container, Paper} from "@material-ui/core";
+
+
 const LandingPage = () => (
-    <h1>Hello</h1>
+    <Container>
+        <Paper elevation={2} className="paddingAndMargin">
+            <h1>Hello</h1>
+        </Paper>
+    </Container>
+
 )
 
 export default LandingPage;

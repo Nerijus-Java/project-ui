@@ -1,5 +1,11 @@
+import {Container, Paper} from "@material-ui/core";
+
 const Login = () => (
-    <h1>Login</h1>
+    <Container>
+        <Paper elevation={2} className="paddingAndMargin">
+            <h1>Login</h1>
+        </Paper>
+    </Container>
 )
 
 export default Login;

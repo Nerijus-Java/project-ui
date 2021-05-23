@@ -25,18 +25,18 @@ export default () => {
       <>
           <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
               <Toolbar className={classes.toolbar}>
+
                   <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-                      Project
+                      <RouterLink to="/" component={Link} color="textPrimary" className={classes.link}>Home</RouterLink>
                   </Typography>
 
                   <nav>
-                      <RouterLink to="/" component={Link} variant="button" color="textPrimary">Home</RouterLink>
-                      <RouterLink to="/login" component={Link} variant="button" color="textPrimary" className={classes.link}>Login</RouterLink>
+
                   </nav>
 
-                  <Button color="inherit" variant="outlined" className={classes.link}>
-                      Login
-                  </Button>
+                  <RouterLink to="/login" component={Button}  variant="outlined" className={classes.link}>Login</RouterLink>
+                  <RouterLink to="/register" component={Button}  variant="outlined" className={classes.link}>Register</RouterLink>
+
               </Toolbar>
           </AppBar>
       </>
