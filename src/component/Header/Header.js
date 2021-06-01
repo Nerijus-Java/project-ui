@@ -1,6 +1,6 @@
 import {AppBar, Button, Link, Toolbar, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import {Link as RouterLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -21,24 +21,28 @@ export default () => {
 
     const classes = useStyles();
 
-    return(
-      <>
-          <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
-              <Toolbar className={classes.toolbar}>
+    return (
+        <>
+            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                <Toolbar className={classes.toolbar}>
 
-                  <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-                      <RouterLink to="/" component={Link} color="textPrimary" className={classes.link}>Home</RouterLink>
-                  </Typography>
+                    <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+                        <Link variant="" to="/" className={classes.link} component={NavLink}>
+                            Home
+                        </Link>
+                    </Typography>
 
-                  <nav>
+                    <nav>
+                        <Link variant="button" to="/login" className={classes.link} component={NavLink}>
+                            <Button variant="outlined">Login</Button>
+                        </Link>
 
-                  </nav>
-
-                  <RouterLink to="/login" component={Button}  variant="outlined" className={classes.link}>Login</RouterLink>
-                  <RouterLink to="/register" component={Button}  variant="outlined" className={classes.link}>Register</RouterLink>
-
-              </Toolbar>
-          </AppBar>
-      </>
+                        <Link variant="button" to="/register" className={classes.link} component={NavLink}>
+                            <Button variant="outlined">Register</Button>
+                        </Link>
+                    </nav>
+                </Toolbar>
+            </AppBar>
+        </>
     );
 }
