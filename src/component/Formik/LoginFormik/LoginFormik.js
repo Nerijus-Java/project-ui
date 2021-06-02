@@ -11,6 +11,8 @@ const validationSchema = Yup.object().shape({
         .required()
 });
 
+
+
 export default () => (
     <Formik
         initialValues={
@@ -30,23 +32,23 @@ export default () => (
                         <div style={{width: '100%'}}>
                             <FormControl error={props.touched.name && !!props.errors.name} fullWidth
                                          variant={"outlined"} margin={"dense"}>
-                                <InputLabel htmlFor='name' color={"primary"} >Username</InputLabel>
-                                <Field id='name' name='name' label='username' color={"primary"} {...props} as={OutlinedInput}/>
+                                <InputLabel htmlFor='name'>Username</InputLabel>
+                                <Field id='name' name='name' label='username' {...props} as={OutlinedInput}/>
                                 <ErrorMessage name='name' component={FormHelperText}/>
                             </FormControl>
                         </div>
 
                         <div style={{width: '100%'}}>
                             <FormControl error={props.touched.surname && !!props.errors.surname} fullWidth
-                                         variant={"outlined"} margin={"dense"} >
-                                <InputLabel htmlFor='surname' color={"primary"} >Surname</InputLabel>
-                                <Field id='surname' name='surname' label='surname' color={"primary"} {...props} as={OutlinedInput}/>
+                                         variant={"outlined"} margin={"dense"}>
+                                <InputLabel htmlFor='surname' >Surname</InputLabel>
+                                <Field id='surname' name='surname' label='surname' {...props} as={OutlinedInput}/>
                                 <ErrorMessage name='surname' component={FormHelperText}/>
 
                             </FormControl>
                         </div>
 
-                        <Button style={{marginTop: "5px"}} variant="outlined" fullWidth color={"primary"} type="submit">Register</Button>
+                        <Button style={{marginTop: "5px"}} fullWidth variant="outlined" color={"inherit"} type="submit">Submit</Button>
                     </Form>
                 </>
             )

@@ -3,13 +3,18 @@
     margin: 10px 0px;
 }
 
+.topPaddingAndMargin{
+    padding: 1px 25px;
+    margin: 10px 0px;
+}
+
 .mainContainer{
     margin-top: 20px;
 }
 
 .formikPaper{
-    padding-left: 70px;
-    padding-right: 70px;
+    padding-left: 60px;
+    padding-right: 60px;
     padding-bottom: 15px;
 }
 

@@ -1,8 +1,42 @@
-import {AppBar, Button, Link, Toolbar, Typography,} from "@material-ui/core";
+import {AppBar, Link, Menu, MenuItem, Toolbar, Typography, withStyles,} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {NavLink} from "react-router-dom";
 import React from 'react';
+import Button from "@material-ui/core/Button";
+import HomeIcon from '@material-ui/icons/Home';
+import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 
+const StyledMenu = withStyles({
+    paper: {
+        border: '1px solid #ffa53b' ,
+    },
+})((props) => (
+    <Menu
+        elevation={0}
+        getContentAnchorEl={null}
+        anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+        }}
+        transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+        }}
+        {...props}
+    />
+));
+
+const StyledMenuItem = withStyles((theme) => ({
+    root: {
+        '&:focus': {
+            backgroundColor: theme.palette.primary.main,
+            '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+                color: theme.palette.common.white,
+            },
+        },
+        fontSize:'10px'
+    },
+}))(MenuItem);
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -12,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     link: {
-        margin: theme.spacing(1, 1.5),
+        margin: theme.spacing(1, 1),
     },
     toolbar: {
         flexWrap: 'wrap',
@@ -23,25 +57,59 @@ const useStyles = makeStyles((theme) => ({
 export default () => {
 
     const classes = useStyles();
+    const [anchorEl, setAnchorEl] = React.useState(null);
 
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
     return (
         <>
-            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+            <AppBar position="static" color={"default"} elevation={0} className={classes.appBar}>
                 <Toolbar className={classes.toolbar}>
 
                     <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-                        <Link variant="" to="/" className={classes.link} component={NavLink}>
-                            Home
-                        </Link>
+                        Project
                     </Typography>
 
-                    <nav>
-                        <Link variant="button" to="/login" className={classes.link} component={NavLink}>
-                            <Button variant="outlined">Login</Button>
-                        </Link>
+                    <div>
+                        <Button
+                            aria-haspopup="true"
+                            variant="outlined"
+                            color={"secondary"}
+                            onClick={handleClick}
+                        >
+                            <PersonOutlineOutlinedIcon/>
+                        </Button>
 
-                        <Link variant="button" to="/register" className={classes.link} component={NavLink}>
-                            <Button variant="outlined">Register</Button>
+                        <StyledMenu
+                            id="customized-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            <Link variant="button" to="/login" color={"inherit"} component={NavLink}>
+                                <StyledMenuItem>
+                                    login
+                                </StyledMenuItem>
+                            </Link>
+                            <Link variant="button" to="/register" color={"inherit"} component={NavLink}>
+                                <StyledMenuItem color={"inherit"}>
+                                   register
+                                </StyledMenuItem>
+                            </Link>
+                        </StyledMenu>
+                    </div>
+
+                    <nav>
+                        <Link variant="button" to="/" className={classes.link} component={NavLink}>
+                            <Button variant="outlined" color={"secondary"}>
+                                <HomeIcon/>
+                            </Button>
                         </Link>
                     </nav>
                 </Toolbar>
