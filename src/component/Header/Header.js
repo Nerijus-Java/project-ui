@@ -40,7 +40,7 @@ const StyledMenuItem = withStyles((theme) => ({
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
-        borderBottom: `1px solid ${theme.palette.divider}`,
+        borderBottom: `1px solid #c648ff`,
     },
     toolbarTitle: {
         flexGrow: 1,
