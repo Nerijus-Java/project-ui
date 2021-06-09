@@ -20,19 +20,22 @@ function Content() {
                         <Route exact path="/">
                             <LandingPage/>
                         </Route>
+
                         <Route path="/login">
                             <Login/>
                         </Route>
+
                         <Route path="/register">
                             <Register/>
                         </Route>
+
                         <Route exact path="/groups">
                             <Groups/>
                         </Route>
-                        <Route  path="/groups/:id">
+
+                        <Route exact path="/groups/:id">
                             <Group/>
                         </Route>
-
                     </Switch>
                 </CSSTransition>
             </TransitionGroup>

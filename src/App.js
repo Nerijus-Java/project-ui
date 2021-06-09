@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 
 const darkTheme = createMuiTheme({
     palette: {
-        type: 'light',
+        type: 'dark',
         primary: {
             main: '#621c84',
         },
