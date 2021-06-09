@@ -1,13 +1,14 @@
 import {Container, Paper} from "@material-ui/core";
+import React from "react";
 
 
 const LandingPage = () => (
     <>
-        <Container maxWidth >
-            <Paper elevation={2} className="topPaddingAndMargin">
+        <Paper style={{marginTop : 0 , paddingTop: 40 , paddingBottom: 5}} variant="outlined">
+            <Container>
                 <h1>Home</h1>
-            </Paper>
-        </Container>
+            </Container>
+        </Paper>
         <Container>
             <Paper elevation={2} className="paddingAndMargin">
                 <h1>Hello</h1>

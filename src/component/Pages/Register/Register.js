@@ -7,11 +7,11 @@ import React from "react";
 const Register = () => (
 
     <>
-        <Container maxWidth >
-            <Paper elevation={2} className="topPaddingAndMargin">
+        <Paper style={{marginTop : 0 , paddingTop: 40 , paddingBottom: 5}} variant="outlined">
+            <Container>
                 <h1>Register</h1>
-            </Paper>
-        </Container>
+            </Container>
+        </Paper>
 
         <Container maxWidth={"md"}>
             <Paper elevation={2} className="paddingAndMargin formikPaper">

@@ -6,6 +6,7 @@ import Header from "./component/Header/Header";
 import Content from "./component/Content/Content";
 import {Provider} from "react-redux";
 import store from "./store";
+import Footer from "./component/Footer/Footer";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,6 +41,7 @@ function App() {
                         <CssBaseline/>
                         <Header/>
                         <Content/>
+                        <Footer/>
                     </ThemeProvider>
                 </div>
             </Router>

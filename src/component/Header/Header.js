@@ -1,11 +1,12 @@
 import {AppBar, Link, Menu, MenuItem, Toolbar, Typography, withStyles,} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import React from 'react';
 import Button from "@material-ui/core/Button";
 import HomeIcon from '@material-ui/icons/Home';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setLogin} from "../../store/slices/UserSlice";
 
 const StyledMenu = withStyles({
     paper: {
@@ -64,6 +65,7 @@ export default () => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const loggedInUser = useSelector(state => state.user.loggedInUser)
+    const history = useHistory();
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -72,6 +74,12 @@ export default () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    function refreshPage() {
+        history.push("/")
+        window.location.reload(false);
+    }
+
     return (
         <>
             <AppBar position="static" color={"default"} elevation={0} className={classes.appBar}>
@@ -112,7 +120,7 @@ export default () => {
                                             {loggedInUser.username}
                                         </StyledMenuItem>
                                     </Link>
-                                    <Link variant="button" to="/login" color={"inherit"} component={NavLink}>
+                                    <Link variant="button" color={"inherit"} onClick={refreshPage}>
                                         <StyledMenuItem>
                                             Logout
                                         </StyledMenuItem>
