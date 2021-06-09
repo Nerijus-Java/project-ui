@@ -1,7 +1,8 @@
 import {ErrorMessage, Field, Form, Formik} from "formik"
-import {FormControl, FormHelperText, InputLabel, OutlinedInput} from "@material-ui/core";
+import {Container, FormControl, FormHelperText, InputLabel, OutlinedInput} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
+import React from "react";
 
 
 const validationSchema = Yup.object().shape({
@@ -26,6 +27,7 @@ export default () => (
         {props => {
             return (
                 <>
+
                     <Form style={{marginTop: 20 , marginBottom:20}} >
                         <div style={{width: '100%'}}>
                             <FormControl error={props.touched.name && !!props.errors.name} fullWidth
@@ -48,6 +50,7 @@ export default () => (
 
                         <Button style={{marginTop: "5px"}} variant="outlined" fullWidth color={"primary"} type="submit">Register</Button>
                     </Form>
+
                 </>
             )
         }

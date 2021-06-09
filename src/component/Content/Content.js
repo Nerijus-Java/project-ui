@@ -4,6 +4,8 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 import "../../styles.css"
+import Groups from "../Pages/Groups/Groups";
+import Group from "../Pages/Group/Group";
 
 
 function Content() {
@@ -24,6 +26,13 @@ function Content() {
                         <Route path="/register">
                             <Register/>
                         </Route>
+                        <Route exact path="/groups">
+                            <Groups/>
+                        </Route>
+                        <Route  path="/groups/:id">
+                            <Group/>
+                        </Route>
+
                     </Switch>
                 </CSSTransition>
             </TransitionGroup>

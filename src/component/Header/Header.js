@@ -50,6 +50,10 @@ const useStyles = makeStyles((theme) => ({
     },
     toolbar: {
         flexWrap: 'wrap',
+    },
+    active: {
+        fontWeight: "bolder",
+        color: "primary"
     }
 }));
 
@@ -76,6 +80,11 @@ export default () => {
                     </Typography>
 
                     <div>
+                        <Link variant="button" color="inherit" to="/groups"
+                              className={classes.link} activeClassName={classes.active} component={NavLink}>
+                            Groups
+                        </Link>
+
                         <Button
                             aria-haspopup="true"
                             variant="outlined"

@@ -4,7 +4,8 @@ import {BrowserRouter as Router} from "react-router-dom";
 import {createMuiTheme, CssBaseline} from "@material-ui/core";
 import Header from "./component/Header/Header";
 import Content from "./component/Content/Content";
-import {amber, deepPurple, green, orange, purple, red} from "@material-ui/core/colors";
+import {Provider} from "react-redux";
+import store from "./store";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,12 +17,12 @@ const useStyles = makeStyles((theme) => ({
 
 const darkTheme = createMuiTheme({
     palette: {
-        type: 'light',
+        type: 'dark',
         primary: {
-            main: '#c648ff',
+            main: '#621c84',
         },
         secondary: {
-            main: '#ffa53b',
+            main: '#ff8a00',
         },
     },
 
@@ -32,15 +33,17 @@ function App() {
     const classes = useStyles();
 
     return (
-        <Router>
-            <div className={classes.root}>
-                <ThemeProvider theme={darkTheme}>
-                    <CssBaseline/>
-                    <Header/>
-                    <Content/>
-                </ThemeProvider>
-            </div>
-        </Router>
+        <Provider store={store}>
+            <Router>
+                <div className={classes.root}>
+                    <ThemeProvider theme={darkTheme}>
+                        <CssBaseline/>
+                        <Header/>
+                        <Content/>
+                    </ThemeProvider>
+                </div>
+            </Router>
+        </Provider>
     );
 }
 

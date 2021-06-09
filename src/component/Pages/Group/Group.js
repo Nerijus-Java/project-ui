@@ -1,5 +1,11 @@
-const Post = () => (
-    <h1>Post</h1>
-)
+import {useParams} from "react-router-dom";
 
-export default Post;
+const Group = () => {
+    let {id} = useParams();
+
+    return(
+        <h1>Group : {id}</h1>
+    )
+}
+
+export default Group;
