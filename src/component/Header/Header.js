@@ -5,10 +5,11 @@ import React from 'react';
 import Button from "@material-ui/core/Button";
 import HomeIcon from '@material-ui/icons/Home';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
+import {useSelector} from "react-redux";
 
 const StyledMenu = withStyles({
     paper: {
-        border: '1px solid #ffa53b' ,
+        border: '1px solid #ffa53b',
     },
 })((props) => (
     <Menu
@@ -34,7 +35,7 @@ const StyledMenuItem = withStyles((theme) => ({
                 color: theme.palette.common.white,
             },
         },
-        fontSize:'10px'
+        fontSize: '10px'
     },
 }))(MenuItem);
 
@@ -62,6 +63,7 @@ export default () => {
 
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const loggedInUser = useSelector(state => state.user.loggedInUser)
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -85,6 +87,7 @@ export default () => {
                             Groups
                         </Link>
 
+
                         <Button
                             aria-haspopup="true"
                             variant="outlined"
@@ -101,16 +104,37 @@ export default () => {
                             open={Boolean(anchorEl)}
                             onClose={handleClose}
                         >
-                            <Link variant="button" to="/login" color={"inherit"} component={NavLink}>
-                                <StyledMenuItem>
-                                    login
-                                </StyledMenuItem>
-                            </Link>
-                            <Link variant="button" to="/register" color={"inherit"} component={NavLink}>
-                                <StyledMenuItem color={"inherit"}>
-                                   register
-                                </StyledMenuItem>
-                            </Link>
+
+                            {loggedInUser?.username ?
+                                <>
+                                    <Link variant="button" to="/login" color={"inherit"} component={NavLink}>
+                                        <StyledMenuItem>
+                                            {loggedInUser.username}
+                                        </StyledMenuItem>
+                                    </Link>
+                                    <Link variant="button" to="/login" color={"inherit"} component={NavLink}>
+                                        <StyledMenuItem>
+                                            Logout
+                                        </StyledMenuItem>
+                                    </Link>
+                                </>
+
+                                :
+
+                                <>
+                                    <Link variant="button" to="/login" color={"inherit"} component={NavLink}>
+                                        <StyledMenuItem>
+                                            login
+                                        </StyledMenuItem>
+                                    </Link>
+                                    <Link variant="button" to="/register" color={"inherit"} component={NavLink}>
+                                        <StyledMenuItem color={"inherit"}>
+                                            register
+                                        </StyledMenuItem>
+                                    </Link>
+                                </>
+                            }
+
                         </StyledMenu>
                     </div>
 

@@ -6,10 +6,13 @@ import {Container, FormControl, FormHelperText, InputLabel, OutlinedInput, Paper
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import React from "react";
+import {useHistory, useLocation} from "react-router-dom";
 
 const Login = () => {
 
     const dispatch = useDispatch()
+    const history = useHistory()
+    const location = useLocation()
 
     const postLogin = (loginData) => {
         login(loginData).then(({data: loggedInUser, headers: {authorization}}) => {
@@ -18,6 +21,9 @@ const Login = () => {
                         loggedInUser,
                         jwt: authorization
                     }))
+            const from = location.state?.from
+
+            history.push(from || '/')
             }
         )
     }
