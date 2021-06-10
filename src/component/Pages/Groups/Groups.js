@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {fetchGroups} from "../../../api/GroupApi";
+import {fetchGroupById, fetchGroups} from "../../../api/GroupApi";
 import {Card, CardActionArea, CardActions, CardContent, Container, Link, Paper, Typography} from "@material-ui/core";
 import {NavLink} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from '@material-ui/core/styles';
+import {fetchPostsByGroupId} from "../../../api/PostApi";
 
 const Groups = () => {
 
@@ -19,11 +20,18 @@ const Groups = () => {
     }));
 
     useEffect(() => {
-        fetchGroups()
-            .then(({data}) => {
-                setGroups(data)
-            })
 
+        const fetchData = async () =>  {
+            fetchGroups()
+                .then(({data}) => {
+                    setGroups(data)
+                })
+        }
+        const timer = setTimeout(() => {
+            fetchData();
+        }, 300);
+
+        return () => clearTimeout(timer);
     }, [])
 
     const classes = useStyles();

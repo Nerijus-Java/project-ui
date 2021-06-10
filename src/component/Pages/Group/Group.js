@@ -6,6 +6,7 @@ import {fetchPostsByGroupId} from "../../../api/PostApi";
 import Post from "../Post/Post";
 import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import PostFormik from "../../Formik/PostFormik/PostFormik";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -92,7 +93,7 @@ const Group = () => {
                                 <Box component="span" display={getDisplayStyle()}>
                                     <Paper style={{padding: "20px 20px", marginTop: 5}} variant="outlined">
                                         <Grid container wrap="nowrap" spacing={2}>
-                                            Form
+                                            <PostFormik id={group.id}/>
                                         </Grid>
                                     </Paper>
                                 </Box>

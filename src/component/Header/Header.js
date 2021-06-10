@@ -5,8 +5,7 @@ import React from 'react';
 import Button from "@material-ui/core/Button";
 import HomeIcon from '@material-ui/icons/Home';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
-import {useDispatch, useSelector} from "react-redux";
-import {setLogin} from "../../store/slices/UserSlice";
+import {useSelector} from "react-redux";
 
 const StyledMenu = withStyles({
     paper: {
@@ -115,7 +114,7 @@ export default () => {
 
                             {loggedInUser?.username ?
                                 <>
-                                    <Link variant="button" to="/login" color={"inherit"} component={NavLink}>
+                                    <Link variant="button" to={"/user/" + loggedInUser.id} color={"inherit"} component={NavLink}>
                                         <StyledMenuItem>
                                             {loggedInUser.username}
                                         </StyledMenuItem>

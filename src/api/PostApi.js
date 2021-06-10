@@ -1,4 +1,7 @@
 import HTTP from "./index";
+import axios from "axios";
+
+export const createPost = (postData, id) => HTTP.post('/post/' + id, postData)
 
 export const fetchPosts = () => HTTP.get("/public/post")
     .finally(response =>
