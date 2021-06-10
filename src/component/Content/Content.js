@@ -6,6 +6,7 @@ import {CSSTransition, TransitionGroup} from "react-transition-group";
 import "../../styles.css"
 import Groups from "../Pages/Groups/Groups";
 import Group from "../Pages/Group/Group";
+import User from "../Pages/User/User";
 
 
 function Content() {
@@ -35,6 +36,10 @@ function Content() {
 
                         <Route exact path="/groups/:id">
                             <Group/>
+                        </Route>
+
+                        <Route path="/user/:id">
+                            <User/>
                         </Route>
                     </Switch>
                 </CSSTransition>

@@ -1,11 +1,11 @@
 import HTTP from "./index";
 
-export const fetchGroups = () => HTTP.get("/groups")
+export const fetchGroups = () => HTTP.get("/public/group")
     .finally(response =>
         new Promise((resolve) => resolve(response))
     )
 
-export const fetchGroupById = (id) => HTTP.get("/groups/" + id)
+export const fetchGroupById = (id) => HTTP.get("/public/group/" + id)
     .finally(response =>
         new Promise((resolve) => resolve(response))
     )
