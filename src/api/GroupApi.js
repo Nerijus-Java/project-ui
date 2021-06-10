@@ -10,10 +10,10 @@ export const fetchGroupById = (id) => HTTP.get("/public/group/" + id)
         new Promise((resolve) => resolve(response))
     )
 
-export const createGroup = (group) => HTTP.post("/groups", group);
+export const createGroup = (group) => HTTP.post("/group", group);
 
-export const updateGroup = (group) => HTTP.put("/groups", group);
+export const updateGroup = (group) => HTTP.put("/group", group);
 
-export const deleteGroup = (id) => HTTP.delete("groups/" + id);
+export const deleteGroup = (id) => HTTP.delete("group/" + id);
 
 

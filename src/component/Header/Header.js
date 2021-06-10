@@ -94,7 +94,6 @@ export default () => {
                             Groups
                         </Link>
 
-
                         <Button
                             aria-haspopup="true"
                             variant="outlined"

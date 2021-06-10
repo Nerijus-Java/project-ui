@@ -8,7 +8,6 @@ const HTTP = axios.create({
 HTTP.interceptors.request.use(config => {
 
     if (store.getState().user.jwt) {
-        console.log(store.getState().user.jwt)
         config.headers.authorization = "Bearer " + store.getState().user.jwt
     }
 

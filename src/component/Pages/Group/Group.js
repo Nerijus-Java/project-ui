@@ -43,7 +43,7 @@ const Group = () => {
 
     useEffect(() => {
 
-        const fetchData = async () =>  {
+        const fetchData = async () => {
             fetchGroupById(id).then(({data}) => {
                 setGroup(data)
             });
@@ -59,7 +59,7 @@ const Group = () => {
         return () => clearTimeout(timer);
     }, [])
 
-    const handleAddPost = () =>{
+    const handleAddPost = () => {
         setShow(!show)
     }
 
@@ -68,7 +68,7 @@ const Group = () => {
             {
                 group?.groupName ?
                     <>
-                        <Paper style={{marginTop : 0 , paddingTop: 40 , paddingBottom: 5}} variant="outlined">
+                        <Paper style={{marginTop: 0, paddingTop: 40, paddingBottom: 5}} variant="outlined">
                             <Container>
                                 <h1>{group.groupName} </h1>
                                 <h3>{group.groupBio}</h3>
@@ -79,16 +79,11 @@ const Group = () => {
                             <div style={{paddingBottom: 10}} className="App">
                                 <h1>Posts</h1>
 
-                                <Divider variant="fullWidth" style={{ margin: "30px 0" }} />
-
-                                <Paper style={{padding:10, marginTop:10}} variant="outlined">
-
-                                    <div className={classes.root}>
-                                        <Button variant="outlined" color="secondary" onClick={handleAddPost}>
-                                            Add Post
-                                        </Button>
-                                    </div>
-                                </Paper>
+                                <div className={classes.root}>
+                                    <Button variant="outlined" color="primary" onClick={handleAddPost} style={{marginLeft:0}}>
+                                        Create Post
+                                    </Button>
+                                </div>
 
                                 <Box component="span" display={getDisplayStyle()}>
                                     <Paper style={{padding: "20px 20px", marginTop: 5}} variant="outlined">
@@ -97,6 +92,8 @@ const Group = () => {
                                         </Grid>
                                     </Paper>
                                 </Box>
+
+                                <Divider variant="fullWidth" style={{margin: "20px 0"}}/>
 
                                 {
                                     post.map((post) => (<Post post={post}/>))
@@ -107,13 +104,13 @@ const Group = () => {
                     :
                     <div>
                         <Backdrop className={classes.backdrop} open={open}>
-                            <CircularProgress color="inherit" />
+                            <CircularProgress color="inherit"/>
                         </Backdrop>
                     </div>
 
             }
         </>
     );
-}
+};
 
 export default Group;
