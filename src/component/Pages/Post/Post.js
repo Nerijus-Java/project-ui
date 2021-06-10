@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import {Box, Button, Grid, Paper} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import ChatBubbleOutlineSharpIcon from '@material-ui/icons/ChatBubbleOutlineSharp';
+import Comments from "../../Comments/Comments";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -61,7 +62,7 @@ const Post = (props) => {
             <Box component="span" display={getDisplayStyle()}>
                 <Paper style={{padding: "20px 20px", marginTop: 5}} variant="outlined">
                     <Grid container wrap="nowrap" spacing={2}>
-                        buttons for comments
+                        <Comments id={props.post.id}/>
                     </Grid>
                 </Paper>
             </Box>

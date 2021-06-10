@@ -41,6 +41,7 @@ function Content() {
                         <Route path="/user/:id">
                             <User/>
                         </Route>
+
                     </Switch>
                 </CSSTransition>
             </TransitionGroup>
