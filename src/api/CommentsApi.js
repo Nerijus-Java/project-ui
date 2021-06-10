@@ -14,3 +14,5 @@ export const fetchCommentByPostID = (id) => HTTP.get("/public/comment/" + id + "
     .finally(response =>
         new Promise((resolve) => resolve(response))
     )
+
+export const createComment = (comment, id) => HTTP.post("/comment/" + id, comment);

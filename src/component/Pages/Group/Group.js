@@ -7,6 +7,8 @@ import Post from "../Post/Post";
 import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import PostFormik from "../../Formik/PostFormik/PostFormik";
+import GroupFormik from "../../Formik/GroupFormik/GroupFormik";
+import {useSelector} from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -29,6 +31,7 @@ const Group = () => {
     const [post, setPost] = useState([]);
     const [open, setOpen] = useState(true);
     const [show, setShow] = useState(true);
+    const loggedInUser = useSelector(state => state.user.loggedInUser)
 
     const getDisplayStyle = () => {
         let display = "";
@@ -59,7 +62,7 @@ const Group = () => {
         return () => clearTimeout(timer);
     }, [])
 
-    const handleAddPost = () => {
+    const handleCreatePostPost = () => {
         setShow(!show)
     }
 
@@ -79,21 +82,27 @@ const Group = () => {
                             <div style={{paddingBottom: 10}} className="App">
                                 <h1>Posts</h1>
 
-                                <div className={classes.root}>
-                                    <Button variant="outlined" color="primary" onClick={handleAddPost} style={{marginLeft:0}}>
-                                        Create Post
-                                    </Button>
-                                </div>
+                                {loggedInUser?.username ?
+                                    <>
+                                        <div className={classes.root}>
+                                            <Button variant="outlined" color="secondary" onClick={handleCreatePostPost}>
+                                                Create Post
+                                            </Button>
+                                        </div>
 
-                                <Box component="span" display={getDisplayStyle()}>
-                                    <Paper style={{padding: "20px 20px", marginTop: 5}} variant="outlined">
-                                        <Grid container wrap="nowrap" spacing={2}>
-                                            <PostFormik id={group.id}/>
-                                        </Grid>
-                                    </Paper>
-                                </Box>
+                                        <Box component="span" display={getDisplayStyle()}>
+                                            <Paper style={{padding: "20px 20px", marginTop: 5}} variant="outlined">
+                                                <Grid container wrap="nowrap" spacing={2}>
+                                                    <PostFormik id={group.id}/>
+                                                </Grid>
+                                            </Paper>
+                                        </Box>
 
-                                <Divider variant="fullWidth" style={{margin: "20px 0"}}/>
+                                        <Divider variant="fullWidth" style={{margin: "20px 0"}}/>
+                                    </>
+                                    :
+                                    ""
+                                }
 
                                 {
                                     post.map((post) => (<Post post={post}/>))

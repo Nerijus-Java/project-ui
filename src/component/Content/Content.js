@@ -38,7 +38,7 @@ function Content() {
                             <Group/>
                         </Route>
 
-                        <Route path="/user/:id">
+                        <Route path="/user">
                             <User/>
                         </Route>
 

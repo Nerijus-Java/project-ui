@@ -113,7 +113,7 @@ export default () => {
 
                             {loggedInUser?.username ?
                                 <>
-                                    <Link variant="button" to={"/user/" + loggedInUser.id} color={"inherit"} component={NavLink}>
+                                    <Link variant="button" to={"/user"} color={"inherit"} component={NavLink}>
                                         <StyledMenuItem>
                                             {loggedInUser.username}
                                         </StyledMenuItem>
