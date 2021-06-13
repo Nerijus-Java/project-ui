@@ -17,4 +17,6 @@ export const fetchCommentByPostID = (id) => HTTP.get("/public/comment/" + id + "
 
 export const createComment = (comment, id) => HTTP.post("/comment/" + id, comment);
 
+export const updateComment = (comment) => HTTP.put("/comment/", comment);
+
 export const deleteComment = (id) => HTTP.delete("/comment/" + id);

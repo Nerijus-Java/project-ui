@@ -9,6 +9,7 @@ import Group from "../Pages/Group/Group";
 import User from "../Pages/User/User";
 import UpdateGroup from "../Formik/UpdateGroup/UpdateGroup";
 import PostUpdateFormik from "../Formik/PostUpdateFormik/PostUpdateFormik";
+import CommentUpdateFormik from "../Formik/CommentUpdateFormik/CommentUpdateFormik";
 
 
 function Content() {
@@ -43,6 +44,10 @@ function Content() {
 
                         <Route exact path="/groups/update/:id">
                             <UpdateGroup/>
+                        </Route>
+
+                        <Route exact path="/comment/update/:id">
+                            <CommentUpdateFormik/>
                         </Route>
 
                         <Route exact path="/post/update/:id">

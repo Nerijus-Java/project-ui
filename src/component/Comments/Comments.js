@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from "react";
 import {deleteComment, fetchCommentByPostID} from "../../api/CommentsApi";
-import {Paper} from "@material-ui/core";
+import {Link, Paper} from "@material-ui/core";
 import IconButton from '@material-ui/core/IconButton';
 
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import {useSelector} from "react-redux";
+import {NavLink} from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import EditIcon from "@material-ui/icons/Edit";
 
 export default (props) => {
 
@@ -18,7 +21,7 @@ export default (props) => {
 
     return (
         <>
-            {!!comments.length ?
+            {comments?.length ?
                 <>
                     {
                         comments.map((comment) => (
@@ -30,13 +33,16 @@ export default (props) => {
 
                                 {loggedInUser?.id === comment.userID || loggedInUser?.roles.includes("ADMIN") ?
                                     <>
-                                        <IconButton variant={"contained"} color={"primary"} size={"small"} style={{marginRight:5}}>
-                                            <EditOutlinedIcon/>
-                                        </IconButton>
-
                                         <IconButton variant={"outlined"} color={"primary"} size={"small"}  onClick={() => handleDelete(comment.id)}>
                                             <DeleteOutlineIcon/>
                                         </IconButton>
+
+                                        <Link to={"/comment/update/" + comment.id} component={NavLink}>
+                                            <IconButton variant={"outlined"} color={"primary"} size={"small"}  >
+                                                <EditIcon/>
+                                            </IconButton>
+                                        </Link>
+
                                     </>
                                     :
                                     ""
