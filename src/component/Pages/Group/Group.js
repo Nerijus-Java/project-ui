@@ -1,15 +1,17 @@
-import {useHistory, useLocation, useParams} from "react-router-dom";
+import {NavLink, useHistory, useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import {fetchGroupById} from "../../../api/GroupApi";
-import {Backdrop, Box, CircularProgress, Container, Divider, Grid, Paper} from "@material-ui/core";
+import {deleteGroup, fetchGroupById} from "../../../api/GroupApi";
+import {Backdrop, Box, CircularProgress, Container, Divider, Grid, Link, Paper} from "@material-ui/core";
 import {fetchPostsByGroupId} from "../../../api/PostApi";
-import {deleteGroup} from "../../../api/GroupApi";
 import Post from "../Post/Post";
 import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import PostFormik from "../../Formik/PostFormik/PostFormik";
 import {useSelector} from "react-redux";
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import EditIcon from '@material-ui/icons/Edit';
+import UpdateGroup from "../../Formik/UpdateGroup/UpdateGroup";
+import HomeIcon from "@material-ui/icons/Home";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -30,8 +32,10 @@ const Group = () => {
 
     const [group, setGroup] = useState()
     const [post, setPost] = useState([]);
+
     const [open, setOpen] = useState(true);
     const [show, setShow] = useState(true);
+
     const loggedInUser = useSelector(state => state.user.loggedInUser)
     const history = useHistory()
 
@@ -74,7 +78,7 @@ const Group = () => {
         }).finally(setOpen(false));
     }
 
-    const handleDeleteGroup =(id) => {
+    const handleDeleteGroup = (id) => {
         deleteGroup(id).finally(history.push("/groups"));
 
     };
@@ -94,7 +98,6 @@ const Group = () => {
                             <p>{group.groupBio}</p>
                         </Container>
 
-
                         <Container>
                             <div style={{paddingBottom: 10}} className="App">
 
@@ -102,15 +105,26 @@ const Group = () => {
                                 {loggedInUser?.username ?
                                     <>
                                         <div className={classes.root}>
-                                            <Button style={{margin: 0}} variant="contained" color="secondary"
+                                            <Button variant="contained" color="secondary"
                                                     onClick={handleCreatePostPost}>
                                                 Create Post
                                             </Button>
                                             {
                                                 loggedInUser?.id === group.userID || loggedInUser?.roles.includes("ADMIN") ?
-                                                    <Button color={"primary"} variant={"contained"} onClick={() => handleDeleteGroup(group.id)}>
-                                                        <DeleteOutlineIcon/>
-                                                    </Button>
+                                                    <>
+                                                        <Button color={"primary"} variant={"contained"}
+                                                                onClick={() => handleDeleteGroup(group.id)}>
+                                                            <DeleteOutlineIcon/>
+                                                        </Button>
+
+                                                        <Link to={"/groups/update/" + group.id} component={NavLink}>
+                                                            <Button color={"primary"} variant={"contained"}>
+                                                                <EditIcon/>
+                                                            </Button>
+                                                        </Link>
+
+
+                                                    </>
                                                     :
                                                     loggedInUser?.username &&
                                                     <Button color={"primary"} variant={"contained"}>Follow</Button>
@@ -124,6 +138,8 @@ const Group = () => {
                                                 </Grid>
                                             </Paper>
                                         </Box>
+
+
                                     </>
                                     :
                                     ""

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import IconButton from '@material-ui/core/IconButton';
-import {Box, Button, Grid, Paper} from "@material-ui/core";
+import {Box, Button, Grid, Link, Paper} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import Comments from "../../Comments/Comments";
@@ -11,6 +11,8 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import {deletePostById} from "../../../api/PostApi";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import {fetchCommentByPostID} from "../../../api/CommentsApi";
+import {NavLink} from "react-router-dom";
+import EditIcon from "@material-ui/icons/Edit";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -87,18 +89,27 @@ const Post = (props) => {
                         </p>
 
                         <div className={classes.root}>
-                            <IconButton color={"secondary"} style={{margin: 0}} className={classes.button}
+                            <IconButton color={"secondary"} className={classes.button}
                                         size={"small"} variant={"outlined"}
                                         onClick={() => handleAddPost(showComments)}>
                                 <ChatBubbleOutlineIcon/>
                             </IconButton>
 
                             {loggedInUser?.id === props.post.userId || loggedInUser?.roles.includes("ADMIN") ?
-                                <IconButton color={"primary"} style={{margin: 0}} className={classes.button}
-                                            size={"small"} variant={"outlined"}
-                                            onClick={() => handleDeletePost(props.post.id)}>
-                                    <DeleteOutlineIcon/>
-                                </IconButton>
+                                <>
+                                    <IconButton color={"primary"} className={classes.button}
+                                                size={"small"} variant={"outlined"}
+                                                onClick={() => handleDeletePost(props.post.id)}>
+                                        <DeleteOutlineIcon/>
+                                    </IconButton>
+
+                                    <Link to={"/post/update/" + props.post.id} component={NavLink}>
+                                        <IconButton color={"primary"}  className={classes.button}
+                                                    size={"small"} variant={"outlined"}>
+                                            <EditIcon/>
+                                        </IconButton>
+                                    </Link>
+                                </>
                                 :
                                 ""
                             }

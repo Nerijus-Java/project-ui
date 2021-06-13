@@ -9,3 +9,5 @@ export const fetchPostsByGroupId = (id) => HTTP.get("/public/post/" + id + "/gro
 export const fetchPostById = (id) => HTTP.get("/public/post/" + id )
 
 export const deletePostById = (id) => HTTP.delete("/post/" + id )
+
+export const updatePosts = (postData) => HTTP.put("/post", postData)

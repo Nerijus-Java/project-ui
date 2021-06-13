@@ -7,6 +7,8 @@ import "../../styles.css"
 import Groups from "../Pages/Groups/Groups";
 import Group from "../Pages/Group/Group";
 import User from "../Pages/User/User";
+import UpdateGroup from "../Formik/UpdateGroup/UpdateGroup";
+import PostUpdateFormik from "../Formik/PostUpdateFormik/PostUpdateFormik";
 
 
 function Content() {
@@ -37,6 +39,14 @@ function Content() {
 
                         <Route exact path="/groups/:id">
                             <Group/>
+                        </Route>
+
+                        <Route exact path="/groups/update/:id">
+                            <UpdateGroup/>
+                        </Route>
+
+                        <Route exact path="/post/update/:id">
+                            <PostUpdateFormik/>
                         </Route>
 
                         <Route path="/user">

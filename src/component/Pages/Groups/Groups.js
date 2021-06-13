@@ -124,7 +124,6 @@ const Groups = () => {
                                             Followers: {group.followerAmount}
                                         </Typography>
 
-
                                     </CardContent>
                                 </CardActionArea>
                             </Card>
