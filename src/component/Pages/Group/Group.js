@@ -65,6 +65,14 @@ const Group = () => {
     }, [])
 
 
+    const reload = () => {
+        fetchGroupById(id).then(({data}) => {
+            setGroup(data)
+        });
+        fetchPostsByGroupId(id).then(({data}) => {
+            setPost(data)
+        }).finally(setOpen(false));
+    }
 
     const handleDeleteGroup =(id) => {
         deleteGroup(id).finally(history.push("/groups"));
@@ -99,8 +107,7 @@ const Group = () => {
                                                 Create Post
                                             </Button>
                                             {
-
-                                                loggedInUser?.id === group.userID ?
+                                                loggedInUser?.id === group.userID || loggedInUser?.roles.includes("ADMIN") ?
                                                     <Button color={"primary"} variant={"contained"} onClick={() => handleDeleteGroup(group.id)}>
                                                         <DeleteOutlineIcon/>
                                                     </Button>
@@ -122,7 +129,7 @@ const Group = () => {
                                     ""
                                 }
                                 {
-                                    post.map((post) => (<Post post={post}/>))
+                                    post.map((post) => (<Post post={post} reloadData={reload}/>))
                                 }
                             </div>
                         </Container>

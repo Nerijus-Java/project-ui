@@ -6,24 +6,14 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import {useSelector} from "react-redux";
-import {useHistory, useLocation} from "react-router-dom";
 
 export default (props) => {
 
-    const [comments, setComments] = useState([]);
+    const comments = props.comments;
     const loggedInUser = useSelector(state => state.user.loggedInUser)
-    const history = useHistory()
-    const location = useLocation()
-
-    useEffect(() => {
-        fetchCommentByPostID(props.id).then(({data}) => {
-            setComments(data)
-        });
-
-    }, [])
 
     const handleDelete = (id) => {
-        deleteComment(id).finally(history.push(location))
+        deleteComment(id).finally(props.reloadComments())
     }
 
     return (
@@ -38,7 +28,7 @@ export default (props) => {
                                     <span>{comment.description}</span>
                                 </div>
 
-                                {loggedInUser?.id === comment.userID ?
+                                {loggedInUser?.id === comment.userID || loggedInUser?.roles.includes("ADMIN") ?
                                     <>
                                         <IconButton variant={"contained"} color={"primary"} size={"small"} style={{marginRight:5}}>
                                             <EditOutlinedIcon/>

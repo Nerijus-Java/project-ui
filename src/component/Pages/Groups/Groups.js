@@ -123,6 +123,8 @@ const Groups = () => {
                                         <Typography variant="body2" color="textSecondary" component="p">
                                             Followers: {group.followerAmount}
                                         </Typography>
+
+
                                     </CardContent>
                                 </CardActionArea>
                             </Card>
