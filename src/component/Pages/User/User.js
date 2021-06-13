@@ -10,7 +10,7 @@ const User = () => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        fetchUserById(loggedInUser.id).then(({data}) => {
+        fetchUserById(loggedInUser?.id).then(({data}) => {
             setUser(data)
         }).then(setIsLoaded(true))
     }, [])
@@ -24,8 +24,7 @@ const User = () => {
                             <h1>{user.username}</h1>
                         </>
                         :
-
-                        <h1>1234124</h1>
+                        ""
                 }
             </Container>
         )

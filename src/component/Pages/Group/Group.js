@@ -1,14 +1,15 @@
-import {useParams} from "react-router-dom";
+import {useHistory, useLocation, useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {fetchGroupById} from "../../../api/GroupApi";
 import {Backdrop, Box, CircularProgress, Container, Divider, Grid, Paper} from "@material-ui/core";
 import {fetchPostsByGroupId} from "../../../api/PostApi";
+import {deleteGroup} from "../../../api/GroupApi";
 import Post from "../Post/Post";
 import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import PostFormik from "../../Formik/PostFormik/PostFormik";
-import GroupFormik from "../../Formik/GroupFormik/GroupFormik";
 import {useSelector} from "react-redux";
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -32,6 +33,7 @@ const Group = () => {
     const [open, setOpen] = useState(true);
     const [show, setShow] = useState(true);
     const loggedInUser = useSelector(state => state.user.loggedInUser)
+    const history = useHistory()
 
     const getDisplayStyle = () => {
         let display = "";
@@ -44,8 +46,8 @@ const Group = () => {
         return display;
     }
 
-    useEffect(() => {
 
+    useEffect(() => {
         const fetchData = async () => {
             fetchGroupById(id).then(({data}) => {
                 setGroup(data)
@@ -62,6 +64,13 @@ const Group = () => {
         return () => clearTimeout(timer);
     }, [])
 
+
+
+    const handleDeleteGroup =(id) => {
+        deleteGroup(id).finally(history.push("/groups"));
+
+    };
+
     const handleCreatePostPost = () => {
         setShow(!show)
     }
@@ -71,23 +80,34 @@ const Group = () => {
             {
                 group?.groupName ?
                     <>
-                        <Paper style={{marginTop: 0, paddingTop: 40, paddingBottom: 5}} variant="outlined">
-                            <Container>
-                                <h1>{group.groupName} </h1>
-                                <h3>{group.groupBio}</h3>
-                            </Container>
-                        </Paper>
+
+                        <Container style={{marginTop: 0, paddingTop: 20, paddingBottom: 5}}>
+                            <h1><b>{group.groupName}</b></h1>
+                            <p>{group.groupBio}</p>
+                        </Container>
+
 
                         <Container>
                             <div style={{paddingBottom: 10}} className="App">
-                                <h1>Posts</h1>
 
+                                <Divider variant="fullWidth" style={{margin: "20px 0"}}/>
                                 {loggedInUser?.username ?
                                     <>
                                         <div className={classes.root}>
-                                            <Button variant="outlined" color="secondary" onClick={handleCreatePostPost}>
+                                            <Button style={{margin: 0}} variant="contained" color="secondary"
+                                                    onClick={handleCreatePostPost}>
                                                 Create Post
                                             </Button>
+                                            {
+
+                                                loggedInUser?.id === group.userID ?
+                                                    <Button color={"primary"} variant={"contained"} onClick={() => handleDeleteGroup(group.id)}>
+                                                        <DeleteOutlineIcon/>
+                                                    </Button>
+                                                    :
+                                                    loggedInUser?.username &&
+                                                    <Button color={"primary"} variant={"contained"}>Follow</Button>
+                                            }
                                         </div>
 
                                         <Box component="span" display={getDisplayStyle()}>
@@ -97,13 +117,10 @@ const Group = () => {
                                                 </Grid>
                                             </Paper>
                                         </Box>
-
-                                        <Divider variant="fullWidth" style={{margin: "20px 0"}}/>
                                     </>
                                     :
                                     ""
                                 }
-
                                 {
                                     post.map((post) => (<Post post={post}/>))
                                 }
@@ -120,6 +137,6 @@ const Group = () => {
             }
         </>
     );
-};
+}
 
 export default Group;

@@ -76,16 +76,14 @@ const Groups = () => {
     return (
         <>
 
-            <Paper style={{marginTop: 0, paddingTop: 40, paddingBottom: 5}}>
-                <Container>
-                    <h1>Groups</h1>
-                </Container>
-            </Paper>
+            <Container >
+                <h1>Groups</h1>
+            </Container>
 
             {loggedInUser?.username ?
-                <Container style={{marginTop:20}}>
+                <Container style={{marginTop: 20}}>
                     <div className={classes.button}>
-                        <Button variant="outlined" color="secondary" onClick={handleCreateGroup}>
+                        <Button variant="contained" color="secondary" onClick={handleCreateGroup}>
                             Create Group
                         </Button>
                     </div>
@@ -97,19 +95,18 @@ const Groups = () => {
                             </Grid>
                         </Paper>
                     </Box>
-
-                    <Divider variant="fullWidth" style={{margin: "20px 0"}}/>
                 </Container>
                 :
                 ""
             }
 
-            <Container style={{marginTop:20}}>
+            <Container style={{marginTop: 20}}>
+                <Divider variant="fullWidth" style={{margin: "20px 0"}}/>
                 {
                     groups.map((group) => (
                         <Link to={"/groups/" + group.id} component={NavLink}>
                             <Card className={classes.root}
-                                  style={{display: 'inline-block', minWidth: 301, margin:"3px"}}>
+                                  style={{display: 'inline-block', minWidth: 301, margin: "3px"}}>
                                 <CardActionArea>
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="h2">
@@ -117,6 +114,14 @@ const Groups = () => {
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary" component="p">
                                             {group.groupBio}
+                                        </Typography>
+
+                                        <Typography variant="body2" color="textSecondary" component="p">
+                                            Posts: {group.postAmount}
+                                        </Typography>
+
+                                        <Typography variant="body2" color="textSecondary" component="p">
+                                            Followers: {group.followerAmount}
                                         </Typography>
                                     </CardContent>
                                 </CardActionArea>

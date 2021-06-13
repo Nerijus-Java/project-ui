@@ -2,7 +2,16 @@ import {useDispatch} from "react-redux";
 import {login} from "../../../api/UserApi"
 import {setLogin} from "../../../store/slices/UserSlice";
 import Button from "@material-ui/core/Button";
-import {Container, FormControl, FormHelperText, InputLabel, Link, OutlinedInput, Paper} from "@material-ui/core";
+import {
+    Container,
+    Divider,
+    FormControl,
+    FormHelperText,
+    InputLabel,
+    Link,
+    OutlinedInput,
+    Paper
+} from "@material-ui/core";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import React from "react";
@@ -49,11 +58,10 @@ const Login = () => {
             {props => {
                 return (
                     <>
-                        <Paper style={{marginTop : 0 , paddingTop: 40 , paddingBottom: 5}} variant="outlined">
-                            <Container>
-                                <h1>Login</h1>
-                            </Container>
-                        </Paper>
+                        <Container style={{marginTop: 0, paddingTop: 40, paddingBottom: 5}}>
+                            <h1>Login</h1>
+                            <Divider variant="fullWidth" style={{margin: "20px 0"}}/>
+                        </Container>
 
                         <Container maxWidth={"md"}>
                             <Paper elevation={2} className="paddingAndMargin formikPaper">

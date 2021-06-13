@@ -12,22 +12,21 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '100vh'
-    }
+        minHeight: '100vh',
+    },
 }));
 
-const darkTheme = createMuiTheme({
+const theme = createMuiTheme({
     palette: {
         type: 'dark',
         primary: {
-            main: '#ba35ff',
+            main: '#ffa900',
         },
         secondary: {
-            main: '#ff8a00',
-        },
+            main: '#ffffff',
+        }
     },
 });
-
 
 function App() {
     const classes = useStyles();
@@ -36,7 +35,7 @@ function App() {
         <Provider store={store}>
             <Router>
                 <div className={classes.root}>
-                    <ThemeProvider theme={darkTheme}>
+                    <ThemeProvider theme={theme}>
                         <CssBaseline/>
                         <Header/>
                         <Content/>

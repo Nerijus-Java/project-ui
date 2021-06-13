@@ -18,6 +18,7 @@ function Content() {
             <TransitionGroup>
                 <CSSTransition timeout={250} classNames='fade' key={location.key}>
                     <Switch location={location}>
+
                         <Route exact path="/">
                             <LandingPage/>
                         </Route>

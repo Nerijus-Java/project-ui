@@ -1,4 +1,4 @@
-import {Button, Container, Link, Paper} from "@material-ui/core";
+import {Button, Container, Divider, Link, Paper} from "@material-ui/core";
 import RegistrationFormik from "../../Formik/UserFormik/RegistrationFormik";
 import "../../../styles.css"
 import {NavLink} from "react-router-dom";
@@ -7,11 +7,10 @@ import React from "react";
 const Register = () => (
 
     <>
-        <Paper style={{marginTop : 0 , paddingTop: 40 , paddingBottom: 5}} variant="outlined">
-            <Container>
-                <h1>Register</h1>
-            </Container>
-        </Paper>
+        <Container style={{marginTop: 0, paddingTop: 40, paddingBottom: 5}}>
+            <h1>Register</h1>
+            <Divider variant="fullWidth" style={{margin: "20px 0"}}/>
+        </Container>
 
         <Container maxWidth={"md"}>
             <Paper elevation={2} className="paddingAndMargin formikPaper">

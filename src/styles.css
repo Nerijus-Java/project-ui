@@ -1,6 +1,12 @@
 .paddingAndMargin{
     padding: 1px 25px;
-    margin: 10px 0px;
+    margin: 15px 0px;
+}
+
+body{
+    background-image: url("backgroundImage.jpg");
+    background-repeat: no-repeat;
+    background-color:white !important;
 }
 
 .topPaddingAndMargin{
