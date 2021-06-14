@@ -10,8 +10,6 @@ import PostFormik from "../../Formik/PostFormik/PostFormik";
 import {useSelector} from "react-redux";
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditIcon from '@material-ui/icons/Edit';
-import UpdateGroup from "../../Formik/UpdateGroup/UpdateGroup";
-import HomeIcon from "@material-ui/icons/Home";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -94,7 +92,7 @@ const Group = () => {
                     <>
 
                         <Container style={{marginTop: 0, paddingTop: 20, paddingBottom: 5}}>
-                            <h1><b>{group.groupName}</b></h1>
+                            <h1>{group.groupName}</h1>
                             <p>{group.groupBio}</p>
                         </Container>
 

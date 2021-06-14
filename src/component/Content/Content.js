@@ -11,7 +11,6 @@ import UpdateGroup from "../Formik/UpdateGroup/UpdateGroup";
 import PostUpdateFormik from "../Formik/PostUpdateFormik/PostUpdateFormik";
 import CommentUpdateFormik from "../Formik/CommentUpdateFormik/CommentUpdateFormik";
 
-
 function Content() {
 
     const location = useLocation()
@@ -54,9 +53,10 @@ function Content() {
                             <PostUpdateFormik/>
                         </Route>
 
-                        <Route path="/user">
+                        <Route exact path="/user">
                             <User/>
                         </Route>
+
 
                     </Switch>
                 </CSSTransition>
