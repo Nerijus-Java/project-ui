@@ -11,12 +11,9 @@ import {useSelector} from "react-redux";
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditIcon from '@material-ui/icons/Edit';
 import {useTranslation} from "react-i18next";
+import BackDrop from "../../BackDrop/BackDrop";
 
 const useStyles = makeStyles((theme) => ({
-    backdrop: {
-        zIndex: theme.zIndex.drawer + 1,
-        color: '#fff',
-    },
     root: {
         '& > *': {
             margin: theme.spacing(1),
@@ -32,7 +29,6 @@ const Group = () => {
     const [group, setGroup] = useState()
     const [post, setPost] = useState([]);
 
-    const [open, setOpen] = useState(true);
     const [show, setShow] = useState(true);
     const {t} = useTranslation('Group');
     const loggedInUser = useSelector(state => state.user.loggedInUser)
@@ -56,7 +52,7 @@ const Group = () => {
             });
             fetchPostsByGroupId(id).then(({data}) => {
                 setPost(data)
-            }).finally(setOpen(false))
+            }).finally()
         }
 
         const timer = setTimeout(() => {
@@ -73,7 +69,7 @@ const Group = () => {
         });
         fetchPostsByGroupId(id).then(({data}) => {
             setPost(data)
-        }).finally(setOpen(false));
+        });
     }
 
     const handleDeleteGroup = (id) => {
@@ -151,12 +147,7 @@ const Group = () => {
                         </Container>
                     </>
                     :
-                    <div>
-                        <Backdrop className={classes.backdrop} open={open}>
-                            <CircularProgress color="inherit"/>
-                        </Backdrop>
-                    </div>
-
+                    <BackDrop/>
             }
         </>
     );

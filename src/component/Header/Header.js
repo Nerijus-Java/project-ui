@@ -117,7 +117,7 @@ export default () => {
                         >
 
                             {loggedInUser?.username ?
-                                <>
+                                <div>
                                     <Link variant="button" to={"/user"} color={"inherit"} component={NavLink}>
                                         <StyledMenuItem>
                                             {loggedInUser.username}
@@ -128,11 +128,11 @@ export default () => {
                                             {t('Logout')}
                                         </StyledMenuItem>
                                     </Link>
-                                </>
+                                </div>
 
                                 :
 
-                                <>
+                                <div>
                                     <Link variant="button" to="/login" color={"inherit"} component={NavLink}>
                                         <StyledMenuItem>
                                             {t('Login')}
@@ -143,7 +143,7 @@ export default () => {
                                             {t('Register')}
                                         </StyledMenuItem>
                                     </Link>
-                                </>
+                                </div>
                             }
 
                         </StyledMenu>

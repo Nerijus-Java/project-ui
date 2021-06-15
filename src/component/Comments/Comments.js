@@ -2,21 +2,17 @@ import React, {useEffect, useState} from "react";
 import {deleteComment, fetchCommentByPostID} from "../../api/CommentsApi";
 import {Link, Paper} from "@material-ui/core";
 import IconButton from '@material-ui/core/IconButton';
-
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import {useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
-import Button from "@material-ui/core/Button";
 import EditIcon from "@material-ui/icons/Edit";
 import SmallAvatar from "../Avatar/SmallAvatar";
-import {fetchPicByUserID} from "../../api/ProfilePicApi";
+
 
 export default (props) => {
 
     const comments = props.comments;
     const loggedInUser = useSelector(state => state.user.loggedInUser)
-
 
     const handleDelete = (id) => {
         deleteComment(id).finally(props.reloadComments())
