@@ -5,10 +5,10 @@ export const fetchPicByUserID = (id) => HTTP.get("/public/picture/" + id + "/use
 export const postPic = (multipartFile) => {
     let formData = new FormData();
 
-    var file = new Blob([
-        JSON.stringify({multipartFile})
-    ], { type: 'application/json' });
+    const {file} = multipartFile;
 
-    formData.append('multipartFile', file, "filename")
+    const blob = new Blob([{multipartFile}],{type: file.type});
+
+    formData.append('multipartFile', file);
     return HTTP.post("/picture", formData);
 }

@@ -24,12 +24,12 @@ const User = () => {
     const {t} = useTranslation('User');
     const loggedInUser = useSelector(state => state.user.loggedInUser)
     const [user, setUser] = useState();
-    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         fetchUserById(loggedInUser?.id).then(({data}) => {
             setUser(data)
-        }).then(setIsLoaded(true))
+        });
+
     }, [])
 
     const classes = useStyles();

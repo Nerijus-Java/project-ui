@@ -27,7 +27,8 @@ export default (props) => {
                         <Form>
                             <Input type={"file"}
                                    name={"file"}
-                                   onChange={(event => props.setFieldValue("file", event.target.files))}
+                                   accept="image/png, image/jpeg"
+                                   onChange={(event => props.setFieldValue("file", event.target.files[0]))}
                             />
                             <Button type={"submit"}>Submit</Button>
                         </Form>
