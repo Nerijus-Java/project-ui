@@ -1,5 +1,4 @@
 import * as Yup from "yup";
-import {useHistory, useLocation} from "react-router-dom";
 import {Form, Formik} from "formik";
 import {Button, Container, Input} from "@material-ui/core";
 import {postPic} from "../../../api/ProfilePicApi";
@@ -10,9 +9,6 @@ const validationSchema = Yup.object().shape({
 });
 
 export default (props) => {
-    const history = useHistory()
-    const location = useLocation()
-
 
     return (
         <>
@@ -20,7 +16,7 @@ export default (props) => {
 
                 <Formik initialValues={{file: ""}}
                         onSubmit={(values) => {
-                            postPic(values)
+                            postPic(values).finally(props.handleFileOnSubmit())
                         }}
                 >
                     {(props) => (

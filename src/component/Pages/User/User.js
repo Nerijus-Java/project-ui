@@ -2,10 +2,11 @@ import React, {useEffect, useState} from "react";
 import {fetchUserById} from "../../../api/UserApi";
 import {useSelector} from "react-redux";
 import {makeStyles} from "@material-ui/core/styles";
-import {Backdrop, CircularProgress, Container, Divider, Paper} from "@material-ui/core";
+import {Avatar, Backdrop, CircularProgress, Container, Divider, Paper} from "@material-ui/core";
 import {useTranslation} from "react-i18next";
-import Button from "@material-ui/core/Button";
 import ProfilePicFormik from "../../Formik/ProfilePicUpload/ProfilePicFormik";
+import MyAvatar from "../../Avatar/MyAvatar";
+import {fetchPicByUserID} from "../../../api/ProfilePicApi";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,13 +25,25 @@ const User = () => {
     const {t} = useTranslation('User');
     const loggedInUser = useSelector(state => state.user.loggedInUser)
     const [user, setUser] = useState();
+    const [profilePic, setProfilePic] = useState();
+
+    const handleFileOnSubmit = () => {
+        fetchPicByUserID(loggedInUser?.id).then((data) => {
+            setProfilePic(data);
+        });
+    }
 
     useEffect(() => {
         fetchUserById(loggedInUser?.id).then(({data}) => {
             setUser(data)
         });
+        fetchPicByUserID(loggedInUser?.id).then((data) => {
+            setProfilePic(data);
+        });
 
     }, [])
+
+
 
     const classes = useStyles();
 
@@ -41,23 +54,14 @@ const User = () => {
                     <>
 
                         <Container style={{marginTop: 0, paddingTop: 20, paddingBottom: 5}}>
-                            <h1>{user.username}</h1>
+
+                            <MyAvatar user={user} profilePic={profilePic}></MyAvatar>
                             <Divider variant="fullWidth" style={{margin: "20px 0"}}/>
+
                         </Container>
 
-                        <ProfilePicFormik/>
+                        <ProfilePicFormik handleFileOnSubmit={() => handleFileOnSubmit()}/>
 
-                        <Container>
-                            <Paper style={{padding: 5, marginBottom: 10}}>
-                                <h1>123</h1>
-                            </Paper>
-                        </Container>
-
-                        <Container>
-                            <Paper style={{padding: 5, marginBottom: 10}}>
-                                <h1> 123</h1>
-                            </Paper>
-                        </Container>
                     </>
                     :
                     <div>
@@ -68,7 +72,7 @@ const User = () => {
 
             }
         </>
-    );
-}
+    )
+};
 
 export default User;

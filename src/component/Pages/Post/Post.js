@@ -14,6 +14,7 @@ import {fetchCommentByPostID} from "../../../api/CommentsApi";
 import {NavLink} from "react-router-dom";
 import EditIcon from "@material-ui/icons/Edit";
 import {useTranslation} from "react-i18next";
+import SmallAvatar from "../../Avatar/SmallAvatar";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -77,9 +78,10 @@ const Post = (props) => {
                 <Grid container wrap="nowrap" spacing={2}>
 
                     <Grid justifyContent="left" item xs zeroMinWidth>
-                        <h2 style={{margin: 0, textAlign: "left"}}>
-                            {props.post.username}
-                        </h2>
+
+                        <div style={{marginBottom:20}}>
+                            <SmallAvatar username={props.post.username} userid={props.post.userId}/>
+                        </div>
 
                         <h3 style={{margin: 0, textAlign: "left"}}>
                             {props.post.postTitle}

@@ -9,11 +9,14 @@ import {useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import EditIcon from "@material-ui/icons/Edit";
+import SmallAvatar from "../Avatar/SmallAvatar";
+import {fetchPicByUserID} from "../../api/ProfilePicApi";
 
 export default (props) => {
 
     const comments = props.comments;
     const loggedInUser = useSelector(state => state.user.loggedInUser)
+
 
     const handleDelete = (id) => {
         deleteComment(id).finally(props.reloadComments())
@@ -27,8 +30,8 @@ export default (props) => {
                         comments.map((comment) => (
                             <Paper style={{padding: "10px", marginTop:5}} variant="outlined">
                                 <div>
-                                    <h2 style={{margin:0}}><b>{comment.username}</b></h2>
-                                    <span>{comment.description}</span>
+                                    <SmallAvatar username={comment.username} userid={comment.userID}/>
+                                    <span style={{marginLeft:5}}>{comment.description}</span>
                                 </div>
 
                                 {loggedInUser?.id === comment.userID || loggedInUser?.roles.includes("ADMIN") ?
