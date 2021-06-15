@@ -32,5 +32,25 @@
     "Password": "Slaptažodis",
     "Name": "Vardas",
     "Surname": "Pavardė"
+  },
+
+  "GroupForm": {
+    "GroupName": "Grupės pavadinimas",
+    "GroupBio": "Grupės Bio",
+    "Create": "Kurti",
+    "Update": "Atnaujinti"
+  },
+
+  "CommentForm": {
+    "Description": "apibūdinimas",
+    "Comment": "Komentuoti",
+    "Update": "Atnaujinti"
+  },
+
+  "PostForm": {
+    "Title": "Pavadinimas",
+    "Description": "apibūdinimas",
+    "Create": "Kurti",
+    "Update": "Atnaujinti"
   }
 }

@@ -15,6 +15,7 @@ import {fetchPostById, updatePosts} from "../../../api/PostApi";
 import {useHistory, useParams} from "react-router-dom";
 import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import {useTranslation} from "react-i18next";
 
 const validationSchema = Yup.object().shape({
     postTitle: Yup.string()
@@ -35,6 +36,7 @@ export default () => {
     let {id} = useParams();
     const [updatingPost, setUpdatingPost] = useState();
     const classes = useStyles();
+    const {t} = useTranslation('PostForm');
 
     useEffect(() => {
         fetchPostById(id).then(({data}) => {
@@ -75,9 +77,9 @@ export default () => {
                                                         error={props.touched.postTitle && !!props.errors.postTitle}
                                                         fullWidth
                                                         variant={"outlined"} margin={"dense"}>
-                                                        <InputLabel htmlFor='postTitle'>Title</InputLabel>
+                                                        <InputLabel htmlFor='postTitle'>{t('Title')}</InputLabel>
                                                         <Field id='postTitle' name='postTitle'
-                                                               label='postTitle' {...props}
+                                                               label={t('Title')} {...props}
                                                                as={OutlinedInput}/>
                                                         <ErrorMessage name='postTitle' component={FormHelperText}/>
                                                     </FormControl>
@@ -88,9 +90,9 @@ export default () => {
                                                         error={props.touched.postDescription && !!props.errors.postDescription}
                                                         fullWidth
                                                         variant={"outlined"} margin={"dense"}>
-                                                        <InputLabel htmlFor='postDescription'>Description</InputLabel>
+                                                        <InputLabel htmlFor='postDescription'>{t('Description')}</InputLabel>
                                                         <Field id='postDescription' name='postDescription'
-                                                               label='postDescription' {...props}
+                                                               label={t('Description')} {...props}
                                                                as={OutlinedInput}/>
                                                         <ErrorMessage name='postDescription'
                                                                       component={FormHelperText}/>
@@ -99,7 +101,7 @@ export default () => {
 
                                                 <Button style={{marginTop: "5px"}} fullWidth variant="outlined"
                                                         color={"inherit"}
-                                                        type="submit">Update</Button>
+                                                        type="submit">{t('Update')}</Button>
                                             </Form>
                                         </>
                                     )

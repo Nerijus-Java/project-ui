@@ -15,6 +15,7 @@ import * as Yup from "yup";
 import {fetchCommentByID, updateComment} from "../../../api/CommentsApi";
 import {useHistory, useParams} from "react-router-dom";
 import {makeStyles} from "@material-ui/core/styles";
+import {useTranslation} from "react-i18next";
 
 const validationSchema = Yup.object().shape({
     description: Yup.string()
@@ -34,6 +35,7 @@ export default () => {
     const history = useHistory()
     const [comment, setComment] = useState();
     const classes = useStyles();
+    const {t} = useTranslation('CommentForm');
 
     useEffect(() => {
         fetchCommentByID(id).then(({data}) => {
@@ -71,9 +73,9 @@ export default () => {
                                                     error={props.touched.description && !!props.errors.description}
                                                     fullWidth
                                                     variant={"outlined"} margin={"dense"}>
-                                                    <InputLabel htmlFor='description'>Description</InputLabel>
+                                                    <InputLabel htmlFor='description'>{t('Description')}</InputLabel>
                                                     <Field id='description' name='description'
-                                                           label='description' {...props}
+                                                           label={t('Description')} {...props}
                                                            as={OutlinedInput}/>
                                                     <ErrorMessage name='description' component={FormHelperText}/>
                                                 </FormControl>
@@ -81,7 +83,7 @@ export default () => {
 
                                             <Button style={{marginTop: "5px"}} fullWidth variant="outlined"
                                                     color={"primary"}
-                                                    type="submit">Comment</Button>
+                                                    type="submit">{t('Update')}</Button>
                                         </Form>
 
                                     )

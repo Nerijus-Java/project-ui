@@ -32,5 +32,25 @@
     "Password": "Password",
     "Name": "name",
     "Surname": "surname"
+  },
+
+  "GroupForm": {
+    "GroupName": "Group name",
+    "GroupBio": "Group Bio",
+    "Create": "Create",
+    "Update": "Update"
+  },
+
+  "CommentForm": {
+    "Description": "Description",
+    "Comment": "Comment",
+    "Update": "Update"
+  },
+
+  "PostForm": {
+    "Title": "Title",
+    "Description": "Description",
+    "Create": "Create",
+    "Update": "Update"
   }
 }

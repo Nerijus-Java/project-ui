@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import {useEffect} from "react";
 import {createPost} from "../../../api/PostApi";
 import {useHistory, useLocation} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 const validationSchema = Yup.object().shape({
     postTitle: Yup.string()
@@ -16,6 +17,7 @@ const validationSchema = Yup.object().shape({
 export default (props) => {
     const history = useHistory()
     const location = useLocation()
+    const {t} = useTranslation('PostForm');
 
     return (
         <Formik
@@ -41,8 +43,8 @@ export default (props) => {
                             <div style={{width: '100%'}}>
                                 <FormControl error={props.touched.postTitle && !!props.errors.postTitle} fullWidth
                                              variant={"outlined"} margin={"dense"}>
-                                    <InputLabel htmlFor='postTitle'>Title</InputLabel>
-                                    <Field id='postTitle' name='postTitle' label='postTitle' {...props}
+                                    <InputLabel htmlFor='postTitle'>{t('Title')}</InputLabel>
+                                    <Field id='postTitle' name='postTitle' label={t('Title')} {...props}
                                            as={OutlinedInput}/>
                                     <ErrorMessage name='postTitle' component={FormHelperText}/>
                                 </FormControl>
@@ -52,16 +54,16 @@ export default (props) => {
                                 <FormControl error={props.touched.postDescription && !!props.errors.postDescription}
                                              fullWidth
                                              variant={"outlined"} margin={"dense"}>
-                                    <InputLabel htmlFor='postDescription'>Description</InputLabel>
+                                    <InputLabel htmlFor='postDescription'>{t('Description')}</InputLabel>
                                     <Field id='postDescription' name='postDescription'
-                                           label='postDescription' {...props}
+                                           label={t('Description')} {...props}
                                            as={OutlinedInput}/>
                                     <ErrorMessage name='postDescription' component={FormHelperText}/>
                                 </FormControl>
                             </div>
 
                             <Button style={{marginTop: "5px"}} fullWidth variant="outlined" color={"inherit"}
-                                    type="submit">Submit</Button>
+                                    type="submit">{t('Create')}</Button>
                         </Form>
                     </>
                 )
