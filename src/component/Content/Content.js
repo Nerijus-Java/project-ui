@@ -10,6 +10,7 @@ import User from "../Pages/User/User";
 import UpdateGroup from "../Formik/UpdateGroup/UpdateGroup";
 import PostUpdateFormik from "../Formik/PostUpdateFormik/PostUpdateFormik";
 import CommentUpdateFormik from "../Formik/CommentUpdateFormik/CommentUpdateFormik";
+import Users from "../Pages/Users/Users";
 
 function Content() {
 
@@ -57,6 +58,9 @@ function Content() {
                             <User/>
                         </Route>
 
+                        <Route path="/users">
+                            <Users/>
+                        </Route>
 
                     </Switch>
                 </CSSTransition>

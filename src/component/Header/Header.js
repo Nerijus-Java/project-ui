@@ -44,8 +44,8 @@ const StyledMenuItem = withStyles((theme) => ({
 const useStyles = makeStyles((theme) => ({
     appBar: {
         borderBottom: `1px solid white`,
-        backgroundColor:"rgb(35,35,35)",
-        color:"#fff"
+        backgroundColor: "rgb(35,35,35)",
+        color: "#fff"
     },
     toolbarTitle: {
         flexGrow: 1,
@@ -94,10 +94,21 @@ export default () => {
                     </Typography>
 
                     <div>
+
+                        {
+                            loggedInUser?.roles.includes("ADMIN") ?
+                                <Link variant="button" color={"inherit"} to={"/users"} component={NavLink}>
+                                    Users
+                                </Link>
+                                :
+                                ""
+                        }
+
                         <Link variant="button" color="inherit" to="/groups"
                               className={classes.link} activeClassName={classes.active} component={NavLink}>
                             {t('Groups')}
                         </Link>
+
 
                         <Button
                             aria-haspopup="true"
@@ -128,6 +139,7 @@ export default () => {
                                             {t('Logout')}
                                         </StyledMenuItem>
                                     </Link>
+
                                 </div>
 
                                 :

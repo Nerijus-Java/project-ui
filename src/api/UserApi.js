@@ -9,4 +9,6 @@ export const fetchUserById = (id) => HTTP.get('/public/user/' + id).finally(resp
     new Promise((resolve) => resolve(response))
 )
 
-const deleteUser = (id) => HTTP.delete('/user/' + id)
+export const deleteUser = (id) => HTTP.delete('/user/' + id)
+
+export const getAllUsers = () => HTTP.get("/public/user")

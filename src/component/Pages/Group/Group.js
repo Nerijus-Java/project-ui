@@ -12,6 +12,7 @@ import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditIcon from '@material-ui/icons/Edit';
 import {useTranslation} from "react-i18next";
 import BackDrop from "../../BackDrop/BackDrop";
+import {Follow, isFollowing, unFollow} from "../../../api/FollowApi";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,6 +29,7 @@ const Group = () => {
 
     const [group, setGroup] = useState()
     const [post, setPost] = useState([]);
+    const [following, setFollowing] = useState(false);
 
     const [show, setShow] = useState(true);
     const {t} = useTranslation('Group');
@@ -52,7 +54,10 @@ const Group = () => {
             });
             fetchPostsByGroupId(id).then(({data}) => {
                 setPost(data)
-            }).finally()
+            });
+            isFollowing(id).then(({data}) => {
+                setFollowing(data)
+            })
         }
 
         const timer = setTimeout(() => {
@@ -72,9 +77,16 @@ const Group = () => {
         });
     }
 
+    const handleOnFollow = () => {
+        if (following){
+            unFollow(id).then(setFollowing(false))
+        } else {
+            Follow(id).then(setFollowing(true))
+        }
+    }
+
     const handleDeleteGroup = (id) => {
         deleteGroup(id).finally(history.push("/groups"));
-
     };
 
     const handleCreatePostPost = () => {
@@ -120,10 +132,16 @@ const Group = () => {
 
                                                     </>
                                                     :
-                                                    loggedInUser?.username &&
-                                                    <Button color={"primary"} variant={"contained"}>
-                                                        {t('Follow')}
-                                                    </Button>
+                                                    following ?
+                                                        <Button color={"primary"} variant={"contained"}
+                                                                onClick={() => handleOnFollow()}>
+                                                            UnFollow
+                                                        </Button>
+                                                        :
+                                                        <Button color={"primary"} variant={"contained"}
+                                                                onClick={() => handleOnFollow()}>
+                                                            {t('Follow')}
+                                                        </Button>
                                             }
                                         </div>
 
