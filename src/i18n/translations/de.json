@@ -52,5 +52,10 @@
     "Description": "Beschreibung",
     "Create": "Erstellen",
     "Update": "Aktualisieren"
+  },
+
+  "User": {
+    "myGroups":"Meine Gruppen" ,
+    "Following": "Folge"
   }
 }

@@ -52,5 +52,10 @@
     "Description": "Description",
     "Create": "Create",
     "Update": "Update"
+  },
+
+  "User": {
+    "myGroups":"My Groups" ,
+    "Following": "Following"
   }
 }

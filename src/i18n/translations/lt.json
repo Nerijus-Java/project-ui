@@ -52,5 +52,10 @@
     "Description": "apibūdinimas",
     "Create": "Kurti",
     "Update": "Atnaujinti"
+  },
+
+  "User": {
+    "myGroups":"Mano grupės" ,
+    "Following": "Stebimas"
   }
 }

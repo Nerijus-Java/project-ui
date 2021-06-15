@@ -2,11 +2,10 @@ import React, {useEffect, useState} from "react";
 import {fetchUserById} from "../../../api/UserApi";
 import {useSelector} from "react-redux";
 import {makeStyles} from "@material-ui/core/styles";
+import {Backdrop, CircularProgress, Container, Divider, Paper} from "@material-ui/core";
+import {useTranslation} from "react-i18next";
 import Button from "@material-ui/core/Button";
-import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
-import {Backdrop, CircularProgress, Container, Divider, Link, Paper} from "@material-ui/core";
-import {NavLink} from "react-router-dom";
-import EditIcon from "@material-ui/icons/Edit";
+
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -21,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const User = () => {
-
+    const {t} = useTranslation('User');
     const loggedInUser = useSelector(state => state.user.loggedInUser)
     const [user, setUser] = useState();
     const [isLoaded, setIsLoaded] = useState(false);
@@ -47,14 +46,14 @@ const User = () => {
 
 
                         <Container>
-                            <Paper style={{padding:5 , marginBottom:10}}>
-                                <h1>My Groups</h1>
+                            <Paper style={{padding: 5, marginBottom: 10}}>
+                                <h1>{t('myGroups')}</h1>
                             </Paper>
                         </Container>
 
                         <Container>
-                            <Paper style={{padding:5, marginBottom:10}}>
-                                <h1>Following</h1>
+                            <Paper style={{padding: 5, marginBottom: 10}}>
+                                <h1> {t('Following')}</h1>
                             </Paper>
                         </Container>
                     </>
