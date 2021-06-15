@@ -1,7 +1,8 @@
 import * as Yup from "yup";
 import {Form, Formik} from "formik";
-import {Button, Container, Input} from "@material-ui/core";
+import {Button, Container, Input, Paper} from "@material-ui/core";
 import {postPic} from "../../../api/ProfilePicApi";
+import React from "react";
 
 const validationSchema = Yup.object().shape({
     file: Yup.mixed()
@@ -12,8 +13,10 @@ export default (props) => {
 
     return (
         <>
-            <Container>
+            <Container style={{marginTop: 20}}>
+                <Paper style={{padding: 20}}>
 
+                    <h1>Profile picture</h1>
                 <Formik initialValues={{file: ""}}
                         onSubmit={(values) => {
                             postPic(values).finally(props.handleFileOnSubmit())
@@ -30,6 +33,7 @@ export default (props) => {
                         </Form>
                     )}
                 </Formik>
+                </Paper>
             </Container>
 
         </>

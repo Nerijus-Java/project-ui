@@ -14,6 +14,9 @@ export const createGroup = (group) => HTTP.post("/group", group);
 
 export const updateGroup = (group) => HTTP.put("/group", group);
 
-export const deleteGroup = (id) => HTTP.delete("group/" + id);
+export const deleteGroup = (id) => HTTP.delete("/group/" + id);
 
+export const getGroupsById = (id) => HTTP.get("/group/" + id + "/user")
+
+export const getUserFollowingGroup = (id) => HTTP.get("/group/follow/" + id + "/user")
 

@@ -7,6 +7,8 @@ import {useTranslation} from "react-i18next";
 import ProfilePicFormik from "../../Formik/ProfilePicUpload/ProfilePicFormik";
 import MyAvatar from "../../Avatar/MyAvatar";
 import {fetchPicByUserID} from "../../../api/ProfilePicApi";
+import UsersGroups from "../../UserGroups/UsersGroups";
+import UserGroupFollowing from "../../UsersGroupsFollowing/UserGroupFollowing";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -62,6 +64,9 @@ const User = () => {
 
                         <ProfilePicFormik handleFileOnSubmit={() => handleFileOnSubmit()}/>
 
+                        <UsersGroups/>
+
+                        <UserGroupFollowing/>
                     </>
                     :
                     <div>
