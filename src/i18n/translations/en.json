@@ -1,0 +1,36 @@
+{
+  "NavBar" :{
+    "Groups": "Groups!",
+    "Login" : "Login",
+    "Register": "Register",
+    "Logout" : "Logout"
+  },
+
+  "Groups": {
+    "Groups": "Groups",
+    "CreateGroup": "Create a Group",
+    "Posts" : "Posts:",
+    "Followers": "Followers:"
+  },
+
+  "Group": {
+    "CreatePost": "Create Post",
+    "Follow": "Follow"
+  },
+
+  "Login": {
+    "Login": "Login",
+    "Username": "Username",
+    "Password": "Password",
+    "DontHaveAcc": "Dont have an account?"
+  },
+
+  "Register": {
+    "Register" : "Register",
+    "AlreadyHaveAcc": "already have an account?",
+    "Username": "Username",
+    "Password": "Password",
+    "Name": "name",
+    "Surname": "surname"
+  }
+}

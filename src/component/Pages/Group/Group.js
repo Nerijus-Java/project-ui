@@ -10,6 +10,7 @@ import PostFormik from "../../Formik/PostFormik/PostFormik";
 import {useSelector} from "react-redux";
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditIcon from '@material-ui/icons/Edit';
+import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -33,7 +34,7 @@ const Group = () => {
 
     const [open, setOpen] = useState(true);
     const [show, setShow] = useState(true);
-
+    const {t} = useTranslation('Group');
     const loggedInUser = useSelector(state => state.user.loggedInUser)
     const history = useHistory()
 
@@ -47,7 +48,6 @@ const Group = () => {
         }
         return display;
     }
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -105,7 +105,7 @@ const Group = () => {
                                         <div className={classes.root}>
                                             <Button variant="contained" color="secondary"
                                                     onClick={handleCreatePostPost}>
-                                                Create Post
+                                                {t('CreatePost')}
                                             </Button>
                                             {
                                                 loggedInUser?.id === group.userID || loggedInUser?.roles.includes("ADMIN") ?
@@ -125,7 +125,9 @@ const Group = () => {
                                                     </>
                                                     :
                                                     loggedInUser?.username &&
-                                                    <Button color={"primary"} variant={"contained"}>Follow</Button>
+                                                    <Button color={"primary"} variant={"contained"}>
+                                                        {t('Follow')}
+                                                    </Button>
                                             }
                                         </div>
 

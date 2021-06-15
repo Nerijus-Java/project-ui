@@ -6,6 +6,8 @@ import Button from "@material-ui/core/Button";
 import HomeIcon from '@material-ui/icons/Home';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 import {useSelector} from "react-redux";
+import {useTranslation} from "react-i18next";
+import LanguageDropDown from "../Language/LanguageDropDown";
 
 const StyledMenu = withStyles({
     paper: {
@@ -67,6 +69,7 @@ export default () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const loggedInUser = useSelector(state => state.user.loggedInUser)
     const history = useHistory();
+    const {t} = useTranslation('NavBar');
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -93,7 +96,7 @@ export default () => {
                     <div>
                         <Link variant="button" color="inherit" to="/groups"
                               className={classes.link} activeClassName={classes.active} component={NavLink}>
-                            Groups
+                            {t('Groups')}
                         </Link>
 
                         <Button
@@ -122,7 +125,7 @@ export default () => {
                                     </Link>
                                     <Link variant="button" color={"inherit"} onClick={refreshPage}>
                                         <StyledMenuItem>
-                                            Logout
+                                            {t('Logout')}
                                         </StyledMenuItem>
                                     </Link>
                                 </>
@@ -132,12 +135,12 @@ export default () => {
                                 <>
                                     <Link variant="button" to="/login" color={"inherit"} component={NavLink}>
                                         <StyledMenuItem>
-                                            login
+                                            {t('Login')}
                                         </StyledMenuItem>
                                     </Link>
                                     <Link variant="button" to="/register" color={"inherit"} component={NavLink}>
                                         <StyledMenuItem color={"inherit"}>
-                                            register
+                                            {t('Register')}
                                         </StyledMenuItem>
                                     </Link>
                                 </>
@@ -152,6 +155,8 @@ export default () => {
                                 <HomeIcon/>
                             </Button>
                         </Link>
+
+                        <LanguageDropDown/>
                     </nav>
                 </Toolbar>
             </AppBar>

@@ -1,0 +1,36 @@
+{
+  "NavBar" :{
+    "Groups": "Gruppen",
+    "Login" : "Anmeldung",
+    "Register": "Registrieren",
+    "Logout" : "Ausloggen"
+  },
+
+  "Groups": {
+    "Groups": "Gruppen",
+    "CreateGroup": "Erstellen Sie eine Gruppe",
+    "Posts" : "Beiträge:",
+    "Followers": "Anhänger:"
+  },
+
+  "Group": {
+    "CreatePost": "Beitrag erstellen",
+    "Follow": "Folgen"
+  },
+
+  "Login": {
+    "Login": "Anmeldung",
+    "Username": "Nutzername",
+    "Password": "Passwort",
+    "DontHaveAcc": "Habe kein Konto?"
+  },
+
+  "Register": {
+    "Register" : "Registrieren",
+    "AlreadyHaveAcc": "Sie haben bereits ein Konto?",
+    "Username": "Nutzername",
+    "Password": "Passwort",
+    "Name": "Name",
+    "Surname": "Nachname"
+  }
+}

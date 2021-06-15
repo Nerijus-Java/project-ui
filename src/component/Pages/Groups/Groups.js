@@ -17,6 +17,7 @@ import Button from "@material-ui/core/Button";
 import {makeStyles} from '@material-ui/core/styles';
 import {useSelector} from "react-redux";
 import GroupFormik from "../../Formik/GroupFormik/GroupFormik";
+import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,6 +41,7 @@ const Groups = () => {
     const [groups, setGroups] = useState([])
     const loggedInUser = useSelector(state => state.user.loggedInUser)
     const [show, setShow] = useState(true);
+    const {t} = useTranslation('Groups');
 
     const getDisplayStyle = () => {
         let display = "";
@@ -77,14 +79,14 @@ const Groups = () => {
         <>
 
             <Container >
-                <h1>Groups</h1>
+                <h1>{t('Groups')}</h1>
             </Container>
 
             {loggedInUser?.username ?
                 <Container style={{marginTop: 20}}>
                     <div className={classes.button}>
                         <Button variant="contained" color="secondary" onClick={handleCreateGroup}>
-                            Create Group
+                            {t('CreateGroup')}
                         </Button>
                     </div>
 

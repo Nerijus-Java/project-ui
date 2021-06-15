@@ -1,0 +1,36 @@
+{
+  "NavBar" :{
+    "Groups": "Grupės",
+    "Login" : "Prisijungti",
+    "Register": "Registruotis",
+    "Logout" : "Atsijungti"
+  },
+
+  "Groups": {
+    "Groups": "Grupės",
+    "CreateGroup": "Sukurkite grupę",
+    "Posts" : "Postas:",
+    "Followers": "Stebėtojai:"
+  },
+
+  "Group": {
+    "CreatePost": "Kurti Posta",
+    "Follow": "Sekite"
+  },
+
+  "Login": {
+    "Login": "Prisijungti",
+    "Username": "Vartotojo vardas",
+    "Password": "Slaptažodis",
+    "DontHaveAcc": "Neturite paskyros?"
+  },
+
+  "Register": {
+    "Register" : "Registruotis",
+    "AlreadyHaveAcc": "Jau turite paskyrą?",
+    "Username": "Vartotojo vardas",
+    "Password": "Slaptažodis",
+    "Name": "Vardas",
+    "Surname": "Pavardė"
+  }
+}

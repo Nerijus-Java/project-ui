@@ -13,6 +13,7 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import {fetchCommentByPostID} from "../../../api/CommentsApi";
 import {NavLink} from "react-router-dom";
 import EditIcon from "@material-ui/icons/Edit";
+import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
     root: {

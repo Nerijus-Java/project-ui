@@ -16,13 +16,14 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import React from "react";
 import {NavLink, useHistory, useLocation} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 const Login = () => {
 
     const dispatch = useDispatch()
     const history = useHistory()
     const location = useLocation()
-
+    const {t} = useTranslation('Login');
 
     const postLogin = (loginData) => {
         login(loginData).then(({data: loggedInUser, headers: {authorization}}) => {
@@ -59,7 +60,7 @@ const Login = () => {
                 return (
                     <>
                         <Container style={{marginTop: 0, paddingTop: 40, paddingBottom: 5}}>
-                            <h1>Login</h1>
+                            <h1>{t('Login')}</h1>
                             <Divider variant="fullWidth" style={{margin: "20px 0"}}/>
                         </Container>
 
@@ -69,8 +70,8 @@ const Login = () => {
                                     <div style={{width: '100%'}}>
                                         <FormControl error={props.touched.username && !!props.errors.username} fullWidth
                                                      variant={"outlined"} margin={"dense"}>
-                                            <InputLabel htmlFor='username' color={"primary"}>Username</InputLabel>
-                                            <Field id='username' name='username' label='username'
+                                            <InputLabel htmlFor='username' color={"primary"}>{t('Username')}</InputLabel>
+                                            <Field id='username' name='username' label={t('Username')}
                                                    color={"primary"} {...props} as={OutlinedInput}/>
                                             <ErrorMessage name='username' component={FormHelperText}/>
                                         </FormControl>
@@ -79,19 +80,19 @@ const Login = () => {
                                     <div style={{width: '100%'}}>
                                         <FormControl error={props.touched.password && !!props.errors.password} fullWidth
                                                      variant={"outlined"} margin={"dense"}>
-                                            <InputLabel htmlFor='password' color={"primary"}>password</InputLabel>
-                                            <Field id='password' name='password' label='password' type="password"
+                                            <InputLabel htmlFor='password' color={"primary"}>{t('Password')}</InputLabel>
+                                            <Field id='password' name='password' label={t('Password')} type="password"
                                                    color={"primary"} {...props} as={OutlinedInput}/>
                                             <ErrorMessage name='password' component={FormHelperText}/>
                                         </FormControl>
                                     </div>
 
                                     <Button style={{marginTop: "5px"}} variant="outlined" fullWidth color={"primary"}
-                                            type="submit">Login</Button>
+                                            type="submit">{t('Login')}</Button>
                                 </Form>
 
                                 <Link variant="button" to="/register" color="secondary" component={NavLink}>
-                                    Dont have an account?
+                                    {t('DontHaveAcc')}
                                 </Link>
                             </Paper>
                         </Container>

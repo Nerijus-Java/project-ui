@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import React, {useEffect} from "react";
 import {register} from "../../../api/UserApi";
 import {useHistory} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 
 const validationSchema = Yup.object().shape({
@@ -20,7 +21,7 @@ const validationSchema = Yup.object().shape({
 
 export default () => {
     const history = useHistory()
-
+    const {t} = useTranslation('Register');
 
     return (
         <Formik
@@ -46,8 +47,8 @@ export default () => {
                             <div style={{width: '100%'}}>
                                 <FormControl error={props.touched.name && !!props.errors.name} fullWidth
                                              variant={"outlined"} margin={"dense"}>
-                                    <InputLabel htmlFor='name' color={"primary"}>Name</InputLabel>
-                                    <Field id='name' name='name' label='username' color={"primary"} {...props}
+                                    <InputLabel htmlFor='name' color={"primary"}>{t('Name')}</InputLabel>
+                                    <Field id='name' name='name' label={t('Name')} color={"primary"} {...props}
                                            as={OutlinedInput}/>
                                     <ErrorMessage name='name' component={FormHelperText}/>
                                 </FormControl>
@@ -56,8 +57,8 @@ export default () => {
                             <div style={{width: '100%'}}>
                                 <FormControl error={props.touched.surname && !!props.errors.surname} fullWidth
                                              variant={"outlined"} margin={"dense"}>
-                                    <InputLabel htmlFor='surname' color={"primary"}>Surname</InputLabel>
-                                    <Field id='surname' name='surname' label='surname' color={"primary"} {...props}
+                                    <InputLabel htmlFor='surname' color={"primary"}>{t('Surname')}</InputLabel>
+                                    <Field id='surname' name='surname' label={t('Surname')} color={"primary"} {...props}
                                            as={OutlinedInput}/>
                                     <ErrorMessage name='surname' component={FormHelperText}/>
 
@@ -67,8 +68,8 @@ export default () => {
                             <div style={{width: '100%'}}>
                                 <FormControl error={props.touched.username && !!props.errors.username} fullWidth
                                              variant={"outlined"} margin={"dense"}>
-                                    <InputLabel htmlFor='username' color={"primary"}>username</InputLabel>
-                                    <Field id='username' name='username' label='username' color={"primary"} {...props}
+                                    <InputLabel htmlFor='username' color={"primary"}>{t('Username')}</InputLabel>
+                                    <Field id='username' name='username' label={t('Username')} color={"primary"} {...props}
                                            as={OutlinedInput}/>
                                     <ErrorMessage name='username' component={FormHelperText}/>
                                 </FormControl>
@@ -77,15 +78,15 @@ export default () => {
                             <div style={{width: '100%'}}>
                                 <FormControl error={props.touched.password && !!props.errors.password} fullWidth
                                              variant={"outlined"} margin={"dense"}>
-                                    <InputLabel htmlFor='password' color={"primary"}>password</InputLabel>
-                                    <Field id='password' name='password' label='password' type="password"
+                                    <InputLabel htmlFor='password' color={"primary"}>{t('Password')}</InputLabel>
+                                    <Field id='password' name='password' label={t('Password')} type="password"
                                            color={"primary"} {...props} as={OutlinedInput}/>
                                     <ErrorMessage name='password' component={FormHelperText}/>
                                 </FormControl>
                             </div>
 
                             <Button style={{marginTop: "5px"}} variant="outlined" fullWidth color={"primary"}
-                                    type="submit">Register</Button>
+                                    type="submit">{t('Register')}</Button>
                         </Form>
 
                     </>
