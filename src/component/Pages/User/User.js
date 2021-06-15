@@ -5,6 +5,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Backdrop, CircularProgress, Container, Divider, Paper} from "@material-ui/core";
 import {useTranslation} from "react-i18next";
 import Button from "@material-ui/core/Button";
+import ProfilePicFormik from "../../Formik/ProfilePicUpload/ProfilePicFormik";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -44,16 +45,17 @@ const User = () => {
                             <Divider variant="fullWidth" style={{margin: "20px 0"}}/>
                         </Container>
 
+                        <ProfilePicFormik/>
 
                         <Container>
                             <Paper style={{padding: 5, marginBottom: 10}}>
-                                <h1>{t('myGroups')}</h1>
+                                <h1>123</h1>
                             </Paper>
                         </Container>
 
                         <Container>
                             <Paper style={{padding: 5, marginBottom: 10}}>
-                                <h1> {t('Following')}</h1>
+                                <h1> 123</h1>
                             </Paper>
                         </Container>
                     </>
@@ -67,6 +69,6 @@ const User = () => {
             }
         </>
     );
-};
+}
 
 export default User;
