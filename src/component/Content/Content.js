@@ -59,7 +59,6 @@ function Content() {
                             <User/>
                         </Route>
 
-
                         <SecureRout roles={["ADMIN"]} path={"/users"}>
                             <Users/>
                         </SecureRout>
