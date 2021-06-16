@@ -135,7 +135,7 @@ const Group = () => {
                                                     following ?
                                                         <Button color={"primary"} variant={"contained"}
                                                                 onClick={() => handleOnFollow()}>
-                                                            UnFollow
+                                                            {t('unFollow')}
                                                         </Button>
                                                         :
                                                         <Button color={"primary"} variant={"contained"}

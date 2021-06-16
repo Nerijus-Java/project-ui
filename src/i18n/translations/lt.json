@@ -1,61 +1,65 @@
 {
-  "NavBar" :{
+  "NavBar": {
     "Groups": "Grupės",
-    "Login" : "Prisijungti",
+    "Login": "Prisijungti",
     "Register": "Registruotis",
-    "Logout" : "Atsijungti"
+    "Logout": "Atsijungti",
+    "Users": "Vartotojai"
   },
-
   "Groups": {
     "Groups": "Grupės",
     "CreateGroup": "Sukurkite grupę",
-    "Posts" : "Postas:",
+    "Posts": "Postas:",
     "Followers": "Stebėtojai:"
   },
-
   "Group": {
     "CreatePost": "Kurti Posta",
-    "Follow": "Sekite"
+    "Follow": "Sekite",
+    "unFollow" : "Nebesekti"
   },
-
   "Login": {
     "Login": "Prisijungti",
     "Username": "Vartotojo vardas",
     "Password": "Slaptažodis",
     "DontHaveAcc": "Neturite paskyros?"
   },
-
   "Register": {
-    "Register" : "Registruotis",
+    "Register": "Registruotis",
     "AlreadyHaveAcc": "Jau turite paskyrą?",
     "Username": "Vartotojo vardas",
     "Password": "Slaptažodis",
     "Name": "Vardas",
     "Surname": "Pavardė"
   },
-
   "GroupForm": {
     "GroupName": "Grupės pavadinimas",
     "GroupBio": "Grupės Bio",
     "Create": "Kurti",
     "Update": "Atnaujinti"
   },
-
   "CommentForm": {
     "Description": "apibūdinimas",
     "Comment": "Komentuoti",
     "Update": "Atnaujinti"
   },
-
   "PostForm": {
     "Title": "Pavadinimas",
     "Description": "apibūdinimas",
     "Create": "Kurti",
     "Update": "Atnaujinti"
   },
-
   "User": {
-    "myGroups":"Mano grupės" ,
+    "myGroups": "Mano grupės",
     "Following": "Stebimas"
+  },
+  "Comments": {
+    "NoComments": "Be komentarų"
+  },
+  "FileForm": {
+    "Upload": "Įkelti"
+  },
+  "Users": {
+    "Users": "Vartotojai",
+    "Delete": "Ištrinti"
   }
 }

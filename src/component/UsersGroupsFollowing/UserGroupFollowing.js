@@ -60,11 +60,11 @@ const Groups = () => {
                                             </Typography>
 
                                             <Typography variant="body2" color="textSecondary" component="p">
-                                                Posts: {group.postAmount}
+                                                {t("Posts")} {group.postAmount}
                                             </Typography>
 
                                             <Typography variant="body2" color="textSecondary" component="p">
-                                                Followers: {group.followerAmount}
+                                                {t("Followers")} {group.followerAmount}
                                             </Typography>
 
                                         </CardContent>

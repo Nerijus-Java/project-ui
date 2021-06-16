@@ -1,61 +1,65 @@
 {
-  "NavBar" :{
+  "NavBar": {
     "Groups": "Groups!",
-    "Login" : "Login",
+    "Login": "Login",
     "Register": "Register",
-    "Logout" : "Logout"
+    "Logout": "Logout",
+    "Users": "Users"
   },
-
   "Groups": {
     "Groups": "Groups",
     "CreateGroup": "Create a Group",
-    "Posts" : "Posts:",
+    "Posts": "Posts:",
     "Followers": "Followers:"
   },
-
   "Group": {
     "CreatePost": "Create Post",
-    "Follow": "Follow"
+    "Follow": "Follow",
+    "unFollow" : "unFollow"
   },
-
   "Login": {
     "Login": "Login",
     "Username": "Username",
     "Password": "Password",
     "DontHaveAcc": "Dont have an account?"
   },
-
   "Register": {
-    "Register" : "Register",
+    "Register": "Register",
     "AlreadyHaveAcc": "already have an account?",
     "Username": "Username",
     "Password": "Password",
     "Name": "name",
     "Surname": "surname"
   },
-
   "GroupForm": {
     "GroupName": "Group name",
     "GroupBio": "Group Bio",
     "Create": "Create",
     "Update": "Update"
   },
-
   "CommentForm": {
     "Description": "Description",
     "Comment": "Comment",
     "Update": "Update"
   },
-
   "PostForm": {
     "Title": "Title",
     "Description": "Description",
     "Create": "Create",
     "Update": "Update"
   },
-
   "User": {
-    "myGroups":"My Groups" ,
+    "myGroups": "My Groups",
     "Following": "Following"
+  },
+  "Comments": {
+    "NoComments": "No Comments"
+  },
+  "FileForm": {
+    "Upload": "Upload"
+  },
+  "Users": {
+    "Users": "Users",
+    "Delete": "Delete"
   }
 }

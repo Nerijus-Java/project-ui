@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 export default () => {
 
     const [users, setUsers] = useState([])
-    const {t} = useTranslation('Groups');
+    const {t} = useTranslation('Users');
     const loggedInUser = useSelector(state => state.user.loggedInUser)
 
     useEffect(() => {
@@ -62,7 +62,7 @@ export default () => {
     return (
         <>
             <Container>
-                <h1>Users</h1>
+                <h1>{t("Users")}</h1>
             </Container>
 
             <Container style={{marginTop: 20}}>
@@ -90,7 +90,7 @@ export default () => {
                                         </Typography>
 
                                         <Button onClick={() => deleteUserById(user.id)} color={"primary"} variant={"contained"}>
-                                            Delete User
+                                            {t("Delete")}
                                         </Button>
                                     </CardContent>
                                 </CardActionArea>

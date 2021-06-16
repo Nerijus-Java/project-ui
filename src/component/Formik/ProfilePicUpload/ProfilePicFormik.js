@@ -3,6 +3,7 @@ import {Form, Formik} from "formik";
 import {Button, Container, Input, Paper} from "@material-ui/core";
 import {postPic} from "../../../api/ProfilePicApi";
 import React from "react";
+import {useTranslation} from "react-i18next";
 
 const validationSchema = Yup.object().shape({
     file: Yup.mixed()
@@ -10,6 +11,8 @@ const validationSchema = Yup.object().shape({
 });
 
 export default (props) => {
+
+    const {t} = useTranslation('FileForm');
 
     return (
         <>
@@ -29,7 +32,7 @@ export default (props) => {
                                    accept="image/png, image/jpeg"
                                    onChange={(event => props.setFieldValue("file", event.target.files[0]))}
                             />
-                            <Button type={"submit"}>Submit</Button>
+                            <Button type={"submit"}>{t('Upload')}</Button>
                         </Form>
                     )}
                 </Formik>

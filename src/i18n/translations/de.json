@@ -1,61 +1,65 @@
 {
-  "NavBar" :{
+  "NavBar": {
     "Groups": "Gruppen",
-    "Login" : "Anmeldung",
+    "Login": "Anmeldung",
     "Register": "Registrieren",
-    "Logout" : "Ausloggen"
+    "Logout": "Ausloggen",
+    "Users": "Benutzer"
   },
-
   "Groups": {
     "Groups": "Gruppen",
     "CreateGroup": "Erstellen Sie eine Gruppe",
-    "Posts" : "Beiträge:",
+    "Posts": "Beiträge:",
     "Followers": "Anhänger:"
   },
-
   "Group": {
     "CreatePost": "Beitrag erstellen",
-    "Follow": "Folgen"
+    "Follow": "Folgen",
+    "unFollow" : "nicht mehr folgen"
   },
-
   "Login": {
     "Login": "Anmeldung",
     "Username": "Nutzername",
     "Password": "Passwort",
     "DontHaveAcc": "Habe kein Konto?"
   },
-
   "Register": {
-    "Register" : "Registrieren",
+    "Register": "Registrieren",
     "AlreadyHaveAcc": "Sie haben bereits ein Konto?",
     "Username": "Nutzername",
     "Password": "Passwort",
     "Name": "Name",
     "Surname": "Nachname"
   },
-
   "GroupForm": {
     "GroupName": "Gruppenname",
     "GroupBio": "Gruppenbiografie",
     "Create": "Erstellen",
     "Update": "Aktualisieren"
   },
-
   "CommentForm": {
     "Description": "Beschreibung",
     "Comment": "Kommentar",
     "Update": "Aktualisieren"
   },
-
   "PostForm": {
     "Title": "Titel",
     "Description": "Beschreibung",
     "Create": "Erstellen",
     "Update": "Aktualisieren"
   },
-
   "User": {
-    "myGroups":"Meine Gruppen" ,
+    "myGroups": "Meine Gruppen",
     "Following": "Folge"
+  },
+  "Comments": {
+    "NoComments": "Keine Kommentare"
+  },
+  "FileForm": {
+    "Upload": "Hochladen"
+  },
+  "Users": {
+    "Users": "Benutzer",
+    "Delete": "Löschen"
   }
 }

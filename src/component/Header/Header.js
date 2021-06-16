@@ -97,8 +97,9 @@ export default () => {
 
                         {
                             loggedInUser?.roles.includes("ADMIN") ?
-                                <Link variant="button" color={"inherit"} to={"/users"} component={NavLink}>
-                                    Users
+                                <Link variant="button" color={"inherit"} to={"/users"} className={classes.link}
+                                      activeClassName={classes.active} component={NavLink}>
+                                    {t("Users")}
                                 </Link>
                                 :
                                 ""
