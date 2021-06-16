@@ -9,8 +9,12 @@ import {useTranslation} from "react-i18next";
 
 const validationSchema = Yup.object().shape({
     groupName: Yup.string()
+        .min(3)
+        .max(50)
         .required(),
     groupBio: Yup.string()
+        .min(3)
+        .max(200)
         .required()
 });
 

@@ -19,6 +19,8 @@ import {useTranslation} from "react-i18next";
 
 const validationSchema = Yup.object().shape({
     description: Yup.string()
+        .min(3)
+        .max(200)
         .required()
 });
 

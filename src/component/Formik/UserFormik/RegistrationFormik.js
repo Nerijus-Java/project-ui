@@ -10,12 +10,20 @@ import {useTranslation} from "react-i18next";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
+        .min(3)
+        .max(50)
         .required(),
     surname: Yup.string()
+        .min(3)
+        .max(50)
         .required(),
     username: Yup.string()
+        .min(3)
+        .max(50)
         .required(),
     password: Yup.string()
+        .min(3)
+        .max(50)
         .required()
 });
 
