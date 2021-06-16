@@ -1,7 +1,6 @@
 import {FormControl, FormHelperText, InputLabel, OutlinedInput} from "@material-ui/core";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import Button from "@material-ui/core/Button";
-import {useEffect} from "react";
 import * as Yup from "yup";
 import {createComment} from "../../../api/CommentsApi";
 import {useTranslation} from "react-i18next";

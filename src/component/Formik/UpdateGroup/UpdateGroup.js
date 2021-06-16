@@ -4,7 +4,6 @@ import Button from "@material-ui/core/Button";
 import React, {useEffect, useState} from "react";
 import {useHistory, useParams} from "react-router-dom";
 import {fetchGroupById, updateGroup} from "../../../api/GroupApi";
-
 import * as Yup from "yup";
 import Container from "@material-ui/core/Container";
 import {useTranslation} from "react-i18next";

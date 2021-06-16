@@ -2,7 +2,6 @@ import * as Yup from "yup";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {FormControl, FormHelperText, InputLabel, OutlinedInput} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import {useEffect} from "react";
 import {createPost} from "../../../api/PostApi";
 import {useHistory, useLocation} from "react-router-dom";
 import {useTranslation} from "react-i18next";

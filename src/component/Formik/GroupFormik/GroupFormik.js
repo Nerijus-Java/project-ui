@@ -1,7 +1,7 @@
 import {FormControl, FormHelperText, InputLabel, OutlinedInput} from "@material-ui/core";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import Button from "@material-ui/core/Button";
-import React, {useEffect} from "react";
+import React from "react";
 import {useHistory, useLocation} from "react-router-dom";
 import {createGroup} from "../../../api/GroupApi";
 import * as Yup from "yup";

@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
         .max(50)
         .required(),
     postDescription: Yup.string()
-        .min(3)
+        .min(10)
         .max(200)
         .required()
 });
