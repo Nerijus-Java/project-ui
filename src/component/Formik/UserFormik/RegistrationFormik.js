@@ -2,7 +2,7 @@ import {ErrorMessage, Field, Form, Formik} from "formik"
 import {FormControl, FormHelperText, InputLabel, OutlinedInput} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
-import React, {useEffect} from "react";
+import React from "react";
 import {register} from "../../../api/UserApi";
 import {useHistory} from "react-router-dom";
 import {useTranslation} from "react-i18next";
@@ -41,9 +41,7 @@ export default () => {
                     password: ''
                 }}
             onSubmit={(values) => {
-                useEffect(
-                    register(values).finally(history.push("/login"))
-                )
+                register(values).finally(history.push("/login"))
             }}
             validationSchema={validationSchema}
         >

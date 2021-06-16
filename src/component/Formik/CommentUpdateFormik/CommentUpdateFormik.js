@@ -59,10 +59,7 @@ export default () => {
                                         description: comment.description,
                                     }}
                                 onSubmit={(values) => {
-                                    useEffect(
-                                        updateComment(values).then(history.goBack())
-                                    )
-
+                                    updateComment(values).then(history.goBack())
                                 }}
                                 validationSchema={validationSchema}
                             >

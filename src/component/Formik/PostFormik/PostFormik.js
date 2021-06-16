@@ -31,12 +31,10 @@ export default (props) => {
                     postDescription: ''
                 }}
             onSubmit={(values) => {
-                useEffect(
                     createPost(values, props.id)
                         .finally(() => {
                             history.push(location)
                         })
-                )
             }}
             validationSchema={validationSchema}
         >

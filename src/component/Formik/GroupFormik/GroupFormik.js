@@ -31,12 +31,11 @@ export default () => {
                     groupBio: ''
                 }}
             onSubmit={(values) => {
-                useEffect(
+
                     createGroup(values)
                         .finally(() => {
                             history.push(location)
                         })
-                )
             }}
             validationSchema={validationSchema}
         >

@@ -27,10 +27,7 @@ export default (props) => {
                     description: '',
                 }}
             onSubmit={(values) => {
-                useEffect(
-                    createComment(values, props.id).then(history.push(location))
-                )
-
+                createComment(values, props.id).then(history.push(location))
             }}
             validationSchema={validationSchema}
         >

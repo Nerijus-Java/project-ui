@@ -1,12 +1,6 @@
 import * as Yup from "yup";
 import {ErrorMessage, Field, Form, Formik} from "formik";
-import {
-    FormControl,
-    FormHelperText,
-    InputLabel,
-    OutlinedInput,
-    Paper
-} from "@material-ui/core";
+import {FormControl, FormHelperText, InputLabel, OutlinedInput, Paper} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import React, {useEffect, useState} from "react";
 import {fetchPostById, updatePosts} from "../../../api/PostApi";
@@ -44,7 +38,7 @@ export default () => {
 
             {
                 updatingPost?.postTitle ?
-                    <Container style={{marginTop:"11%"}}>
+                    <Container style={{marginTop: "11%"}}>
                         <Paper style={{padding: 15}}>
                             <Formik
                                 initialValues={
@@ -54,12 +48,10 @@ export default () => {
                                         postDescription: updatingPost.postDescription
                                     }}
                                 onSubmit={(values) => {
-                                    useEffect(
-                                        updatePosts(values)
-                                            .finally(() => {
-                                                history.goBack();
-                                            })
-                                    )
+                                    updatePosts(values)
+                                        .finally(() => {
+                                            history.goBack();
+                                        })
                                 }}
                                 validationSchema={validationSchema}
                             >
@@ -85,7 +77,8 @@ export default () => {
                                                         error={props.touched.postDescription && !!props.errors.postDescription}
                                                         fullWidth
                                                         variant={"outlined"} margin={"dense"}>
-                                                        <InputLabel htmlFor='postDescription'>{t('Description')}</InputLabel>
+                                                        <InputLabel
+                                                            htmlFor='postDescription'>{t('Description')}</InputLabel>
                                                         <Field id='postDescription' name='postDescription'
                                                                label={t('Description')} {...props}
                                                                as={OutlinedInput}/>

@@ -22,7 +22,6 @@ const validationSchema = Yup.object().shape({
 });
 
 
-
 export default () => {
     let {id} = useParams();
     const [group, setGroup] = useState()
@@ -39,7 +38,7 @@ export default () => {
         <>
             {
                 group?.groupName ?
-                    <Container style={{marginTop:"11%"}}>
+                    <Container style={{marginTop: "11%"}}>
                         <Paper style={{padding: 15}}>
                             <Formik
                                 initialValues={
@@ -49,12 +48,11 @@ export default () => {
                                         groupBio: group.groupBio
                                     }}
                                 onSubmit={(values) => {
-                                    useEffect(
-                                        updateGroup(values)
-                                            .finally(() => {
-                                                history.push("/groups/" + id)
-                                            })
-                                    )
+
+                                    updateGroup(values)
+                                        .finally(() => {
+                                            history.push("/groups/" + id)
+                                        })
                                 }}
                                 validationSchema={validationSchema}
                             >
