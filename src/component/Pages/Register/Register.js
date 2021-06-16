@@ -1,4 +1,4 @@
-import {Button, Container, Divider, Link, Paper} from "@material-ui/core";
+import {Container, Divider, Link, Paper} from "@material-ui/core";
 import RegistrationFormik from "../../Formik/UserFormik/RegistrationFormik";
 import "../../../styles.css"
 import {NavLink} from "react-router-dom";

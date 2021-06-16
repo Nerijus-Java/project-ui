@@ -16,7 +16,7 @@ function Content() {
 
     const location = useLocation()
 
-    return(
+    return (
         <>
             <TransitionGroup>
                 <CSSTransition timeout={250} classNames='fade' key={location.key}>

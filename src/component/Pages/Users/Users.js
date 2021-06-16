@@ -1,14 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {
-    Card,
-    CardActionArea,
-    CardContent,
-    Container,
-    Divider,
-    Link,
-    Typography
-} from "@material-ui/core";
-import {NavLink} from "react-router-dom";
+import {Card, CardActionArea, CardContent, Container, Divider, Link, Typography} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from '@material-ui/core/styles';
 import {useSelector} from "react-redux";
@@ -46,8 +37,8 @@ export default () => {
 
     }, [])
 
-    const deleteUserById = (id) =>{
-        if (id !== loggedInUser.id){
+    const deleteUserById = (id) => {
+        if (id !== loggedInUser.id) {
             deleteUser(id).finally(
                 getAllUsers()
                     .then(({data}) => {
@@ -89,7 +80,8 @@ export default () => {
                                             {user.surname}
                                         </Typography>
 
-                                        <Button onClick={() => deleteUserById(user.id)} color={"primary"} variant={"contained"}>
+                                        <Button onClick={() => deleteUserById(user.id)} color={"primary"}
+                                                variant={"contained"}>
                                             {t("Delete")}
                                         </Button>
                                     </CardContent>

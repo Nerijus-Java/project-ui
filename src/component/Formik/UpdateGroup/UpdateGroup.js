@@ -1,12 +1,4 @@
-import {
-    Backdrop,
-    CircularProgress,
-    FormControl,
-    FormHelperText,
-    InputLabel,
-    OutlinedInput,
-    Paper
-} from "@material-ui/core";
+import {FormControl, FormHelperText, InputLabel, OutlinedInput, Paper} from "@material-ui/core";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import Button from "@material-ui/core/Button";
 import React, {useEffect, useState} from "react";
@@ -15,8 +7,8 @@ import {fetchGroupById, updateGroup} from "../../../api/GroupApi";
 
 import * as Yup from "yup";
 import Container from "@material-ui/core/Container";
-import {makeStyles} from "@material-ui/core/styles";
 import {useTranslation} from "react-i18next";
+import BackDrop from "../../BackDrop/BackDrop";
 
 const validationSchema = Yup.object().shape({
     groupName: Yup.string()
@@ -29,18 +21,12 @@ const validationSchema = Yup.object().shape({
         .required()
 });
 
-const useStyles = makeStyles((theme) => ({
-    backdrop: {
-        zIndex: theme.zIndex.drawer + 1,
-        color: '#fff',
-    },
-}));
+
 
 export default () => {
     let {id} = useParams();
     const [group, setGroup] = useState()
     const history = useHistory()
-    const classes = useStyles();
     const {t} = useTranslation('GroupForm');
 
     useEffect(() => {
@@ -118,9 +104,7 @@ export default () => {
                         </Paper>
                     </Container>
                     :
-                    <Backdrop className={classes.backdrop} open={true}>
-                        <CircularProgress color="inherit" />
-                    </Backdrop>
+                    <BackDrop/>
             }
         </>
     )

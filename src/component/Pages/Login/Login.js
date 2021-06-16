@@ -32,9 +32,9 @@ const Login = () => {
                         loggedInUser,
                         jwt: authorization
                     }))
-            const from = location.state?.from
+                const from = location.state?.from
 
-            history.push(from || '/')
+                history.push(from || '/')
             }
         )
     }
@@ -66,11 +66,12 @@ const Login = () => {
 
                         <Container maxWidth={"md"}>
                             <Paper elevation={2} className="paddingAndMargin formikPaper">
-                                <Form style={{marginTop: 20 , marginBottom:20}} >
+                                <Form style={{marginTop: 20, marginBottom: 20}}>
                                     <div style={{width: '100%'}}>
                                         <FormControl error={props.touched.username && !!props.errors.username} fullWidth
                                                      variant={"outlined"} margin={"dense"}>
-                                            <InputLabel htmlFor='username' color={"primary"}>{t('Username')}</InputLabel>
+                                            <InputLabel htmlFor='username'
+                                                        color={"primary"}>{t('Username')}</InputLabel>
                                             <Field id='username' name='username' label={t('Username')}
                                                    color={"primary"} {...props} as={OutlinedInput}/>
                                             <ErrorMessage name='username' component={FormHelperText}/>
@@ -80,7 +81,8 @@ const Login = () => {
                                     <div style={{width: '100%'}}>
                                         <FormControl error={props.touched.password && !!props.errors.password} fullWidth
                                                      variant={"outlined"} margin={"dense"}>
-                                            <InputLabel htmlFor='password' color={"primary"}>{t('Password')}</InputLabel>
+                                            <InputLabel htmlFor='password'
+                                                        color={"primary"}>{t('Password')}</InputLabel>
                                             <Field id='password' name='password' label={t('Password')} type="password"
                                                    color={"primary"} {...props} as={OutlinedInput}/>
                                             <ErrorMessage name='password' component={FormHelperText}/>

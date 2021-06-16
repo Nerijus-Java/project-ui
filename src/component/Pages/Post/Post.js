@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import IconButton from '@material-ui/core/IconButton';
 import {Box, Button, Grid, Link, Paper} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
@@ -10,10 +10,8 @@ import {useSelector} from "react-redux";
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import {deletePostById} from "../../../api/PostApi";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
-import {fetchCommentByPostID} from "../../../api/CommentsApi";
 import {NavLink} from "react-router-dom";
 import EditIcon from "@material-ui/icons/Edit";
-import {useTranslation} from "react-i18next";
 import SmallAvatar from "../../Avatar/SmallAvatar";
 
 const useStyles = makeStyles((theme) => ({
@@ -32,14 +30,9 @@ const Post = (props) => {
 
     const [showComments, setShowComments] = useState(true);
     const [showCommentForm, setShowCommentForm] = useState(true);
-    const [comments, setComments] = useState([]);
+
     const loggedInUser = useSelector(state => state.user.loggedInUser);
 
-    useEffect(() => {
-        fetchCommentByPostID(props.post.id).then(({data}) => {
-            setComments(data)
-        });
-    }, [])
 
     const getDisplayStyle = (show) => {
         let display = "";
@@ -50,12 +43,6 @@ const Post = (props) => {
             display += "inline";
         }
         return display;
-    }
-
-    const reloadComments = () => {
-        fetchCommentByPostID(props.post.id).then(({data}) => {
-            setComments(data)
-        });
     }
 
     const handleAddComment = (show) => {
@@ -79,7 +66,7 @@ const Post = (props) => {
 
                     <Grid justifyContent="left" item xs zeroMinWidth>
 
-                        <div style={{marginBottom:20}}>
+                        <div style={{marginBottom: 20}}>
                             <SmallAvatar username={props.post.username} userid={props.post.userId}/>
                         </div>
 
@@ -107,7 +94,7 @@ const Post = (props) => {
                                     </IconButton>
 
                                     <Link to={"/post/update/" + props.post.id} component={NavLink}>
-                                        <IconButton color={"primary"}  className={classes.button}
+                                        <IconButton color={"primary"} className={classes.button}
                                                     size={"small"} variant={"outlined"}>
                                             <EditIcon/>
                                         </IconButton>
@@ -136,12 +123,12 @@ const Post = (props) => {
                             <Grid container wrap="nowrap" spacing={2}>
                                 <Container style={{padding: 2, margin: 5}}>
                                     <Paper style={{padding: 10}} variant="outlined">
-                                        <CommentFormik id={props.post.id} reloadComments={reloadComments}/>
+                                        <CommentFormik id={props.post.id}/>
                                     </Paper>
                                 </Container>
                             </Grid>
                         </Box>
-                        <Comments comments={comments} reloadComments={reloadComments}/>
+                        <Comments id={props.post.id}/>
                     </Container>
                 </Grid>
             </Box>

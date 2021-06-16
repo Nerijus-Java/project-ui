@@ -1,28 +1,15 @@
 import React, {useEffect, useState} from "react";
 import {fetchGroups} from "../../../api/GroupApi";
-import {
-    Box,
-    Card,
-    CardActionArea,
-    CardContent,
-    Container,
-    Divider,
-    Grid,
-    Link,
-    Paper,
-    Typography
-} from "@material-ui/core";
+import {Box, Container, Divider, Grid, Link, Paper,} from "@material-ui/core";
 import {NavLink} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from '@material-ui/core/styles';
 import {useSelector} from "react-redux";
 import GroupFormik from "../../Formik/GroupFormik/GroupFormik";
 import {useTranslation} from "react-i18next";
+import GroupCard from "../../GroupCard/GroupCard";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        maxWidth: 345,
-    },
     button: {
         '&:focus': {
             backgroundColor: theme.palette.primary.main,
@@ -78,7 +65,7 @@ const Groups = () => {
     return (
         <>
 
-            <Container >
+            <Container>
                 <h1>{t('Groups')}</h1>
             </Container>
 
@@ -107,28 +94,7 @@ const Groups = () => {
                 {
                     groups.map((group) => (
                         <Link to={"/groups/" + group.id} component={NavLink}>
-                            <Card className={classes.root}
-                                  style={{display: 'inline-block', minWidth: 301, margin: "3px"}}>
-                                <CardActionArea>
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            {group.groupName}
-                                        </Typography>
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                            {group.groupBio}
-                                        </Typography>
-
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                            {t('Posts')} {group.postAmount}
-                                        </Typography>
-
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                            {t('Followers')} {group.followerAmount}
-                                        </Typography>
-
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
+                            <GroupCard group={group}/>
                         </Link>
                     ))
                 }

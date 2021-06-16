@@ -77,7 +77,8 @@ export default () => {
                                 <FormControl error={props.touched.username && !!props.errors.username} fullWidth
                                              variant={"outlined"} margin={"dense"}>
                                     <InputLabel htmlFor='username' color={"primary"}>{t('Username')}</InputLabel>
-                                    <Field id='username' name='username' label={t('Username')} color={"primary"} {...props}
+                                    <Field id='username' name='username' label={t('Username')}
+                                           color={"primary"} {...props}
                                            as={OutlinedInput}/>
                                     <ErrorMessage name='username' component={FormHelperText}/>
                                 </FormControl>

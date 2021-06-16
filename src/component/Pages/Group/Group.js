@@ -1,7 +1,7 @@
 import {NavLink, useHistory, useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {deleteGroup, fetchGroupById} from "../../../api/GroupApi";
-import {Backdrop, Box, CircularProgress, Container, Divider, Grid, Link, Paper} from "@material-ui/core";
+import {Box, Container, Divider, Grid, Link, Paper} from "@material-ui/core";
 import {fetchPostsByGroupId} from "../../../api/PostApi";
 import Post from "../Post/Post";
 import {makeStyles} from "@material-ui/core/styles";
@@ -30,8 +30,8 @@ const Group = () => {
     const [group, setGroup] = useState()
     const [post, setPost] = useState([]);
     const [following, setFollowing] = useState(false);
-
     const [show, setShow] = useState(true);
+
     const {t} = useTranslation('Group');
     const loggedInUser = useSelector(state => state.user.loggedInUser)
     const history = useHistory()
@@ -78,7 +78,7 @@ const Group = () => {
     }
 
     const handleOnFollow = () => {
-        if (following){
+        if (following) {
             unFollow(id).then(setFollowing(false))
         } else {
             Follow(id).then(setFollowing(true))

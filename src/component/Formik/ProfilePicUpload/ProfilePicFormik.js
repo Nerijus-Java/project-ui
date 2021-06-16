@@ -20,22 +20,22 @@ export default (props) => {
                 <Paper style={{padding: 20}}>
 
                     <h1>Profile picture</h1>
-                <Formik initialValues={{file: ""}}
-                        onSubmit={(values) => {
-                            postPic(values).finally(props.handleFileOnSubmit())
-                        }}
-                >
-                    {(props) => (
-                        <Form>
-                            <Input type={"file"}
-                                   name={"file"}
-                                   accept="image/png, image/jpeg"
-                                   onChange={(event => props.setFieldValue("file", event.target.files[0]))}
-                            />
-                            <Button type={"submit"}>{t('Upload')}</Button>
-                        </Form>
-                    )}
-                </Formik>
+                    <Formik initialValues={{file: ""}}
+                            onSubmit={(values) => {
+                                postPic(values).finally(props.handleFileOnSubmit())
+                            }}
+                    >
+                        {(props) => (
+                            <Form>
+                                <Input type={"file"}
+                                       name={"file"}
+                                       accept="image/png, image/jpeg"
+                                       onChange={(event => props.setFieldValue("file", event.target.files[0]))}
+                                />
+                                <Button type={"submit"}>{t('Upload')}</Button>
+                            </Form>
+                        )}
+                    </Formik>
                 </Paper>
             </Container>
 

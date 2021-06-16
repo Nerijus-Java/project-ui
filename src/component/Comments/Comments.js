@@ -12,12 +12,25 @@ import {useTranslation} from "react-i18next";
 
 export default (props) => {
 
-    const comments = props.comments;
+
     const loggedInUser = useSelector(state => state.user.loggedInUser)
     const {t} = useTranslation('Comments');
+    const [comments, setComments] = useState([]);
+
+    useEffect(() => {
+        fetchCommentByPostID(props.id).then(({data}) => {
+            setComments(data)
+        });
+    }, [])
+
+    const reloadComments = () => {
+        fetchCommentByPostID(props.id).then(({data}) => {
+            setComments(data)
+        });
+    }
 
     const handleDelete = (id) => {
-        deleteComment(id).finally(props.reloadComments())
+        deleteComment(id).finally(reloadComments)
     }
 
     return (
@@ -26,20 +39,21 @@ export default (props) => {
                 <>
                     {
                         comments.map((comment) => (
-                            <Paper style={{padding: "10px", marginTop:5}} variant="outlined">
+                            <Paper style={{padding: "10px", marginTop: 5}} variant="outlined">
                                 <div>
                                     <SmallAvatar username={comment.username} userid={comment.userID}/>
-                                    <span style={{marginLeft:5}}>{comment.description}</span>
+                                    <span style={{marginLeft: 5}}>{comment.description}</span>
                                 </div>
 
                                 {loggedInUser?.id === comment.userID || loggedInUser?.roles.includes("ADMIN") ?
                                     <>
-                                        <IconButton variant={"outlined"} color={"primary"} size={"small"}  onClick={() => handleDelete(comment.id)}>
+                                        <IconButton variant={"outlined"} color={"primary"} size={"small"}
+                                                    onClick={() => handleDelete(comment.id)}>
                                             <DeleteOutlineIcon/>
                                         </IconButton>
 
                                         <Link to={"/comment/update/" + comment.id} component={NavLink}>
-                                            <IconButton variant={"outlined"} color={"primary"} size={"small"}  >
+                                            <IconButton variant={"outlined"} color={"primary"} size={"small"}>
                                                 <EditIcon/>
                                             </IconButton>
                                         </Link>
@@ -53,7 +67,7 @@ export default (props) => {
                     }
                 </>
                 :
-                <Paper style={{padding: "10px", margin:5}} variant="outlined">
+                <Paper style={{padding: "10px", margin: 5}} variant="outlined">
                     <span><b>{t('NoComments')}</b></span>
                 </Paper>
 

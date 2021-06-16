@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import * as Yup from "yup";
 import {createComment} from "../../../api/CommentsApi";
 import {useTranslation} from "react-i18next";
+import {useHistory, useLocation} from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
     description: Yup.string()
@@ -16,6 +17,8 @@ const validationSchema = Yup.object().shape({
 export default (props) => {
 
     const {t} = useTranslation('CommentForm');
+    const history = useHistory();
+    const location = useLocation();
 
     return (
         <Formik
@@ -25,7 +28,7 @@ export default (props) => {
                 }}
             onSubmit={(values) => {
                 useEffect(
-                    createComment(values, props.id).then(props.reloadComments())
+                    createComment(values, props.id).then(history.push(location))
                 )
 
             }}
