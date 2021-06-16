@@ -11,6 +11,7 @@ import UpdateGroup from "../Formik/UpdateGroup/UpdateGroup";
 import PostUpdateFormik from "../Formik/PostUpdateFormik/PostUpdateFormik";
 import CommentUpdateFormik from "../Formik/CommentUpdateFormik/CommentUpdateFormik";
 import Users from "../Pages/Users/Users";
+import SecureRout from "./SecureRout";
 
 function Content() {
 
@@ -58,9 +59,10 @@ function Content() {
                             <User/>
                         </Route>
 
-                        <Route path="/users">
+
+                        <SecureRout roles={["ADMIN"]} path={"/users"}>
                             <Users/>
-                        </Route>
+                        </SecureRout>
 
                     </Switch>
                 </CSSTransition>
